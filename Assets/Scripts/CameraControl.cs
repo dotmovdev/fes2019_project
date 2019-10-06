@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraControl : MonoBehaviour
 {
+    [Header("TargetCameraRef")]
+    [SerializeField]
+    private bool isTargetCameraActive = false;
     [SerializeField]
     private Camera mainCamera;
     [SerializeField]
@@ -14,7 +17,7 @@ public class CameraControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(targetObject == null)
+        if(isTargetCameraActive && targetObject == null)
         {
             Debug.LogError("targetObject is Null.");
         }
@@ -23,7 +26,7 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (targetObject != null)
+        if (isTargetCameraActive && targetObject != null)
         {
             mainCamera.transform.LookAt(targetObject);
         }
