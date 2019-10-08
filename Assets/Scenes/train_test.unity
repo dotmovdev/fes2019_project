@@ -146,16 +146,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 70951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8ad2e19c068cfe4189c6db72ee0cec8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cc2e148189708d40994d01d51151fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  road_prefab: {fileID: 2779199278131176917, guid: 4e606d5b66577e14ca086be469a9d134,
+  train_prefab: {fileID: 5602597646212813495, guid: 34331626311e09547990717d93c60127,
     type: 3}
-  train_prefab: {fileID: 3612032913330504132, guid: 34331626311e09547990717d93c60127,
+  rocket_prefab: {fileID: 8939704844005821913, guid: 0ed97e045b26b584fb7f27f82d3c1088,
     type: 3}
-  interval: 0.3
-  offset: 22.7
-  unitVec: {x: 1.77, y: 0, z: 0.6}
+  unitVec: {x: 1.77, y: 0, z: 0}
 --- !u!4 &70953
 Transform:
   m_ObjectHideFlags: 0
@@ -636,7 +634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350876219}
   m_LocalRotation: {x: 0, y: 0.22208458, z: 0, w: 0.97502744}
-  m_LocalPosition: {x: 23.6, y: 1, z: 38.7}
+  m_LocalPosition: {x: 0, y: 1, z: -28.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
