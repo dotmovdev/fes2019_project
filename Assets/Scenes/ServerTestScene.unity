@@ -324,8 +324,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1369683108}
   - component: {fileID: 1369683107}
-  - component: {fileID: 1369683110}
   - component: {fileID: 1369683109}
+  - component: {fileID: 1369683110}
   m_Layer: 0
   m_Name: SignServer
   m_TagString: Untagged
@@ -342,11 +342,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369683106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b7599757d54da145a548c632f98c220, type: 3}
+  m_Script: {fileID: 11500000, guid: 15797175a8006ec4f8bf4235dc2c4c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   port: 8080
-  signStorage: {fileID: 1369683110}
+  signStorage: {fileID: 1369683109}
 --- !u!4 &1369683108
 Transform:
   m_ObjectHideFlags: 0
@@ -370,11 +370,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369683106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0314f35809490f468ba5ee146fa8517, type: 3}
+  m_Script: {fileID: 11500000, guid: 65f3d1d35d0b1464680861d0b93c0150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 1637598371957724851, guid: 35c5563e938fc2149abc38d28bed0398, type: 3}
-  storage: {fileID: 1369683110}
 --- !u!114 &1369683110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,9 +382,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369683106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bc6ae845ad5a4043a01420957ed00b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 75cb78718292fa048acc0c3e10d16ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  star: {fileID: 1637598371957724851, guid: 86e238ff7205a5548a015888964900d5, type: 3}
+  storage: {fileID: 1369683109}
 --- !u!1 &2031604753
 GameObject:
   m_ObjectHideFlags: 0
