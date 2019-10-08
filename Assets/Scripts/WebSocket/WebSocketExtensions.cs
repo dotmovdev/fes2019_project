@@ -40,7 +40,6 @@ namespace WebSocketExtensions {
         }
 
         protected override void OnMessage (MessageEventArgs e) {
-            Debug.Log(e.Data);
             if (callback != null) {
                 string[] splitted = e.Data.Split('|');
 
@@ -63,8 +62,8 @@ namespace WebSocketExtensions {
                         callback.OnCompleted(id);
                         break;
                     case (int)Event.EVENT_LINED:
-                        Sign sign = JsonUtility.FromJson<Sign>(data);
-                        callback.OnLined(id, sign);
+                        SimpleSign sign = JsonUtility.FromJson<SimpleSign>(data);
+                        callback.OnLined(id, sign.ToSign());
                         break;
                     case (int)Event.EVENT_MOVED:
                         Controll controll = JsonUtility.FromJson<Controll>(data);
