@@ -18,7 +18,7 @@ public class StarSphereControl : MonoBehaviour
     [SerializeField]
     private float spawnDuration = 1.0f;
     [SerializeField]
-    private Transform frontCameraTransform;
+    private Ease easeType;
 
     public Color SphereColor
     {
@@ -56,8 +56,25 @@ public class StarSphereControl : MonoBehaviour
         spawnEffect.SendEvent("OnBurst");
     }
 
-    public void StartSpawn(Vector3 targetPosition)
+    public void StartSpawn(Vector3 startPosition, Vector3 targetPosition, System.Action onCompleteAction)
     {
-
+        var spawnTween = DOTween.To(
+            () => this.transform.localPosition = startPosition,
+            position => this.transform.localPosition = position,
+            targetPosition,
+            spawnDuration);
+        spawnTween.SetEase(easeType);
+        spawnTween.OnComplete(() =>
+        {
+            var burstTween = DOTween.To(
+                () => Alpha = 1.0f,
+                alpha => Alpha = alpha,
+                0.0f,
+                0.35f
+                );
+            PlayBurst();
+            onCompleteAction.Invoke();
+        });
+       
     }
 }

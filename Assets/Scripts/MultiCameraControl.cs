@@ -29,6 +29,8 @@ public class MultiCameraControl : MonoBehaviour
         }
     }
 
+    //public List<Transform> SpawnTransforms
+
     [Header("Camera")]
     [SerializeField]
     private Camera frontCamera;
@@ -38,6 +40,9 @@ public class MultiCameraControl : MonoBehaviour
     [Header("Rotation")]
     [SerializeField]
     private float rotationSpeed;
+
+    [Header("Spawn")]
+    private List<Transform> spawnTransforms = new List<Transform>();
 
     // Start is called before the first frame update
     void Start()
