@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;
 using DG.Tweening;
+using SignExtensions;
 
 public class StarSphereControl : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class StarSphereControl : MonoBehaviour
     private float spawnDuration = 1.0f;
     [SerializeField]
     private Ease easeType;
+    [SerializeField]
+    private string id = "";
 
     public Color SphereColor
     {
@@ -56,7 +59,7 @@ public class StarSphereControl : MonoBehaviour
         spawnEffect.SendEvent("OnBurst");
     }
 
-    public void StartSpawn(Vector3 startPosition, Vector3 targetPosition, System.Action onCompleteAction)
+    public void Spawn(string id, Sign sign, Vector3 startPosition, Vector3 targetPosition, System.Action onCompleteAction)
     {
         var spawnTween = DOTween.To(
             () => this.transform.localPosition = startPosition,
