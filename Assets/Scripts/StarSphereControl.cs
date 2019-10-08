@@ -16,8 +16,6 @@ public class StarSphereControl : MonoBehaviour
 
     [Header("SpawnParameters")]
     [SerializeField]
-    private Vector3 spawnBasePosition;
-    [SerializeField]
     private float spawnDuration = 1.0f;
     [SerializeField]
     private Transform frontCameraTransform;
@@ -50,7 +48,7 @@ public class StarSphereControl : MonoBehaviour
 
     private void Start()
     {
-        enterCamera();        
+
     }
 
     public void PlayBurst()
@@ -58,25 +56,8 @@ public class StarSphereControl : MonoBehaviour
         spawnEffect.SendEvent("OnBurst");
     }
 
-    private void enterCamera()
+    public void StartSpawn(Vector3 targetPosition)
     {
-        var tween = DOTween.To(
-            () => this.transform.localPosition,
-            p => this.transform.localPosition = p,
-            new Vector3(spawnBasePosition.x, 0, spawnBasePosition.z),
-            spawnDuration);
 
-        tween.OnComplete(() =>
-        {
-            Debug.Log("OnComplete");
-            PlayBurst();
-
-            //Sphereを透明に
-            DOTween.To(
-                () => Alpha,
-                alpha => Alpha = alpha,
-                0.0f,
-                0.35f);
-        });
     }
 }

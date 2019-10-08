@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MultiScreenControl : MonoBehaviour
 {
-    [Header("Cameras")]
-    private List<Camera> ScreenCameras = new List<Camera>();
+    [SerializeField]
+    private GameMaster gameMasterRef;
 
     public int DisplayCount
     {
@@ -15,23 +15,33 @@ public class MultiScreenControl : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    [System.Serializable]
+    public struct ScreenSetting
     {
-        Debug.LogFormat("<color=red>Display Connected: </color>{0}", DisplayCount);
-
-        if(DisplayCount > 1)
-        {
-            for(int i = 1; i < DisplayCount; i++)
-            {
-                Display.displays[i].Activate();
-            }
-        }
+        public int Width;
+        public int Height;
     }
 
-    // Update is called once per frame
-    void Update()
+    [Header("Screen Settings")]
+    [SerializeField]
+    private List<ScreenSetting> screenSettings = new List<ScreenSetting>();
+
+    public void ActivateDisplays()
     {
-        
+        Debug.Log(DisplayCount);
+
+        //複数ディスプレイを検知する
+        //1: メインディスプレイ, 2~:複数のサブディスプレイで横長にする。
+        //基本的にInspectorの設定に基づく
+
+        for(int i = 0; i < DisplayCount; i++)
+        {
+            Display.displays[i].Activate();
+
+            if (Display.displays[i].active && i <= screenSettings.Count)
+            {
+                Display.displays[i].SetRenderingResolution(screenSettings[i].Width, screenSettings[i].Height);
+            }
+        }
     }
 }
