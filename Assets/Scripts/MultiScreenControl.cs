@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiScreenCameraControl : MonoBehaviour
+public class MultiScreenControl : MonoBehaviour
 {
-    [Header("MultiScreenCamera")]
+    [Header("Cameras")]
     private List<Camera> ScreenCameras = new List<Camera>();
 
     public int DisplayCount
