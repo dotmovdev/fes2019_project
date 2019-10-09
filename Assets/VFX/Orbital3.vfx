@@ -2287,7 +2287,7 @@ VisualEffectResource:
             serializedVersion: 2
             key0: {r: 2.6082377, g: 2.6082377, b: 2.6082377, a: 0.64705884}
             key1: {r: 2.2793782, g: 2.2793782, b: 2.2793782, a: 0.59607846}
-            key2: {r: 0, g: 0, b: 0, a: 0.59607846}
+            key2: {r: 0, g: 0, b: 0, a: 0}
             key3: {r: 0, g: 0, b: 0, a: 0}
             key4: {r: 0, g: 0, b: 0, a: 0}
             key5: {r: 0, g: 0, b: 0, a: 0}
@@ -2303,7 +2303,7 @@ VisualEffectResource:
             ctime7: 0
             atime0: 5975
             atime1: 55127
-            atime2: 52235
+            atime2: 0
             atime3: 0
             atime4: 0
             atime5: 0
