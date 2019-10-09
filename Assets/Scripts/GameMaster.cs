@@ -24,11 +24,20 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        MultiScreenControlRef.ActivateDisplays();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_EDITOR
+
+#else
         //マルチスクリーン対応
-        MultiScreenControlRef.ActivateDisplays();
+        MultiScreenControlRef.FixSecondaryWindow();
+#endif
     }
 
     // Update is called once per frame
