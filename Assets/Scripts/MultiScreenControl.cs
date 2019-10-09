@@ -62,26 +62,21 @@ public class MultiScreenControl : MonoBehaviour
 
     public void FixSecondaryWindow()
     {
-        int handle;  //ウィンドウ
+        int firstWindowHandle;  //ウィンドウ
+        int secondWindowHandle;  //ウィンドウ
 
-        const String WINDOW_NAME = "Unity Secondary Display";
+        const String FIRST_WINDOW_NAME = "fes2019";
+        const String SECOND_WINDOW_NAME = "Unity Secondary Display";
 
         //常に最前面に表示
         const int HWND_TOPMOST = -1;
         //ウィンドウを表示
         const int SWP_SHOWWINDOW = 0x0040;
 
-        int display = NativePlugin.GetDesktopWindow();
+        firstWindowHandle = NativePlugin.FindWindow(null, FIRST_WINDOW_NAME);
+        secondWindowHandle = NativePlugin.FindWindow(null, SECOND_WINDOW_NAME);
 
-        NativePlugin.RECT rect = new NativePlugin.RECT();
-        NativePlugin.GetWindowRect(display, out rect);
-
-        int w = rect.right;
-        int h = rect.buttom;
-
-        handle = NativePlugin.FindWindow(null, WINDOW_NAME);
-
-        NativePlugin.SetWindowPos(handle, HWND_TOPMOST, 1920 * 2, 0, 1920, 1080, SWP_SHOWWINDOW);
-        Screen.SetResolution(1920, 1080, true);
+        NativePlugin.SetWindowPos(firstWindowHandle, HWND_TOPMOST, 0, 0, 1920 * 2, 1080, SWP_SHOWWINDOW);
+        NativePlugin.SetWindowPos(secondWindowHandle, HWND_TOPMOST, 1920 * 2, 0, 1920/2, 1080, SWP_SHOWWINDOW);
     }
 }
