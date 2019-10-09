@@ -14,14 +14,16 @@ public class TrainMove : MonoBehaviour
     public float interval;
     public float offset;
 
+    private Renderer[] BodyRender;
 
-    //おきかえる
-    private int count;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject body = transform.GetChild(0).Find("body").gameObject;
+        BodyRender = transform.GetComponentsInChildren<Renderer>();
+
+
     }
 
     // Update is called once per frame
@@ -53,11 +55,23 @@ public class TrainMove : MonoBehaviour
     }
     private void Do()
     {
+        direction.Normalize();
         //終わったらデストロイ
-        transform.DOMove(transform.position + direction * 20f, MovingTime).OnComplete(() =>
+        transform.DOMove(transform.position + direction * MovingTime*10f, MovingTime).OnComplete(() =>
         {
-            Destroy(this.gameObject);
-        });
+
+            //めも
+            //うっすら消えていく(Do\tweenとか？)してデストロイする
+
+            foreach (Renderer render in BodyRender)
+            {
+
+                render.material.SetFloat("_alpha", 0);
+            }
+
+
+            //Destroy(this.gameObject);
+        }).SetEase(Ease.Linear);
 
     }
 
@@ -72,4 +86,26 @@ public class TrainMove : MonoBehaviour
         MovingTime = _movingtime;
         Do();
     }
+
+
+    //始点と終点を指定するタイプのメモ
+    //private void Do()
+    //{
+    //    //終わったらデストロイ
+    //    transform.DOMove(Goal_pos, MovingTime).OnComplete(() =>
+    //    {
+    //        Destroy(this.gameObject);
+    //    }).OnUpdate(() =>
+    //    {
+    //        //進行方向を向く
+    //        Vector3 dirVec = this.gameObject.transform.position - pre_pos;
+    //        Debug.Log(pre_pos);
+    //        Debug.Log(this.gameObject.transform.position);
+    //        direction = dirVec.normalized;
+    //        pre_pos = this.transform.position;
+
+    //        //Instatiateされたら走り続ける
+    //        transform.rotation = Quaternion.LookRotation(direction);
+    //    });
+    //}
 }

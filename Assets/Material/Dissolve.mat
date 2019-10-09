@@ -245,7 +245,7 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _Parallax: 0.02
-    - _Param: 2
+    - _Param: 0.866
     - _ReceivesSSR: 1
     - _RefractionModel: 0
     - _SSRefractionProjectionModel: 0
@@ -296,6 +296,7 @@ Material:
     - Color_2C38EC3: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 1}
     - Color_79E7D793: {r: 0, g: 8, b: 4.266667, a: 0}
     - Color_F7953F5F: {r: 1, g: 0, b: 0, a: 0}
+    - Vector2_B715A5FF: {r: -3, g: 30, b: 0, a: 0}
     - Vector2_C7FA83CD: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
@@ -313,4 +314,4 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _edgeColor: {r: 0, g: 2.1641915, b: 3.5648696, a: 0}
+    - _edgeColor: {r: 1.4184822, g: 0.5225987, b: 0, a: 0}

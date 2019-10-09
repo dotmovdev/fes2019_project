@@ -45,6 +45,7 @@ public class CallTrain_Rocket : MonoBehaviour
         train = Instantiate(train_prefab, _position, Quaternion.identity);
         train.GetComponent<TrainMove>().setDirection(_direction);
         train.GetComponent<TrainMove>().setMovingTime(_minute);
+
     }
     public void CallRocket(Vector3 _position, Vector3 _direction, int _minute)
     {
