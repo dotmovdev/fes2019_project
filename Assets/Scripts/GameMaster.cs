@@ -6,12 +6,12 @@ using SignExtensions;
 public class GameMaster : MonoBehaviour, ISignCallback
 {
     [SerializeField]
-    private MultiCameraControl multiCameraControlRef;
-    public MultiCameraControl MultiCameraControlRef
+    private MainCameraControl mainCameraControlRef;
+    public MainCameraControl MainCameraControlRef
     {
         get
         {
-            return multiCameraControlRef;
+            return mainCameraControlRef;
         }
     }
 
