@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dissolve
+  m_Name: LineDissolve
   m_Shader: {fileID: -6465566751694194690, guid: 3c781f3e4ccac9d4ab13ab3561ef11b3,
     type: 3}
   m_ShaderKeywords: 
@@ -245,7 +245,7 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _Parallax: 0.02
-    - _Param: 0.866
+    - _Param: 0.69
     - _ReceivesSSR: 1
     - _RefractionModel: 0
     - _SSRefractionProjectionModel: 0
@@ -298,7 +298,7 @@ Material:
     - Color_F7953F5F: {r: 1, g: 0, b: 0, a: 0}
     - Vector2_B715A5FF: {r: -3, g: 30, b: 0, a: 0}
     - Vector2_C7FA83CD: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
+    - _BaseColor: {r: 0.3584906, g: 0.3187236, b: 0.23166609, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
@@ -314,4 +314,4 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _edgeColor: {r: 1.4184822, g: 0.5225987, b: 0, a: 0}
+    - _edgeColor: {r: 2.5283518, g: 1.8155155, b: 0, a: 0}

@@ -6,6 +6,7 @@ public class CallTrain_Rocket : MonoBehaviour
 {
     public GameObject train_prefab;
     public GameObject rocket_prefab;
+    
 
 
     private GameObject train;
@@ -13,6 +14,7 @@ public class CallTrain_Rocket : MonoBehaviour
 
     //検証用
     public Vector3 unitVec;
+    public int traintime;
 
     // Start is called before the first frame update
     void Start()
@@ -27,14 +29,14 @@ public class CallTrain_Rocket : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector3 pos = new Vector3(0, 0, 0);
-            CallTrain(pos, unitVec, 10);
+            CallTrain(pos, unitVec,traintime);
         }
 
         //Zキーを押すとロケットがとぶサンプル
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Vector3 pos = new Vector3(0, 0, 0);
-            CallRocket(pos, unitVec, 10);
+            CallRocket(pos, unitVec, 3);
         }
 
 
