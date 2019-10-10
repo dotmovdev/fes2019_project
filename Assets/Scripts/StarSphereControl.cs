@@ -7,6 +7,10 @@ using SignExtensions;
 
 public class StarSphereControl : MonoBehaviour
 {
+    [Header("Prefab")]
+    [SerializeField]
+    private GameObject signPrefab;
+
     [Header("Visual Effects")]
     [SerializeField]
     private VisualEffect spawnEffect;
@@ -14,6 +18,8 @@ public class StarSphereControl : MonoBehaviour
     [Header("Sphere")]
     [SerializeField]
     private MeshRenderer sphereMeshRenderer;
+    [SerializeField]
+    private GameObject internalStar;
 
     [Header("SpawnParameters")]
     [SerializeField]
@@ -57,10 +63,15 @@ public class StarSphereControl : MonoBehaviour
     public void PlayBurst()
     {
         spawnEffect.SendEvent("OnBurst");
+        //一緒に内部の星も消す
+        Destroy(internalStar);
     }
 
     public void Spawn(string id, Sign sign, Vector3 startPosition, Vector3 targetPosition, System.Action onCompleteAction)
     {
+        this.id = id;
+
+        //StarSphereを決められた位置までもっていく。
         var spawnTween = DOTween.To(
             () => this.transform.localPosition = startPosition,
             position => this.transform.localPosition = position,
@@ -69,6 +80,7 @@ public class StarSphereControl : MonoBehaviour
         spawnTween.SetEase(easeType);
         spawnTween.OnComplete(() =>
         {
+            //星が弾ける
             var burstTween = DOTween.To(
                 () => Alpha = 1.0f,
                 alpha => Alpha = alpha,
@@ -76,8 +88,21 @@ public class StarSphereControl : MonoBehaviour
                 0.35f
                 );
             PlayBurst();
-            onCompleteAction.Invoke();
+
+            //星座を作る
+            createSign(sign);
+            //コールバッグでフラグリセット
         });
-       
+    }
+
+    private void createSign(Sign sign)
+    {
+        GameObject signObject = Instantiate(signPrefab);
+
+        var signControl = signObject.GetComponent<SignControl>();
+        signControl.AllocateStars(sign.starPositions, () =>
+        {
+            Debug.Log("<color=red>OnComplete: allocate stars!</color>");
+        });
     }
 }

@@ -31,6 +31,7 @@ public class SpawnManager : MonoBehaviour
     {
         isSpawning = true;
 
+        //星の発生源
         GameObject starSphere = Instantiate(StarSpherePrefab, this.transform);
         var starSphereControl = starSphere.GetComponent<StarSphereControl>();
 

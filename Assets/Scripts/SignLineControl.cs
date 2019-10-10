@@ -16,7 +16,7 @@ public struct Line
     }
 }
 
-public class ConstellationLineControl : MonoBehaviour
+public class SignLineControl : MonoBehaviour
 {
     [SerializeField]
     private LineRenderer lineRenderer;
