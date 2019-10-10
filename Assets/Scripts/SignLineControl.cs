@@ -27,6 +27,7 @@ public class SignLineControl : MonoBehaviour
     {
         set
         {
+            Debug.Log(lineRenderer.positionCount);
             for(int i = 0; i < lineRenderer.positionCount; i++)
             {
                 lineRenderer.SetPosition(i, value.Start);

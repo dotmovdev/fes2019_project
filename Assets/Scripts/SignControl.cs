@@ -19,6 +19,17 @@ public class SignControl : MonoBehaviour
     [SerializeField]
     private Ease easeType;
 
+    private static float signScale = 1.0f;
+
+    private List<SignLineControl> signLines = new List<SignLineControl>();
+    public List<SignLineControl> SignLines
+    {
+        get
+        {
+            return signLines;
+        }
+    }
+
     private Transform signTransform
     {
         get
@@ -30,18 +41,15 @@ public class SignControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //signLine.LinePoints = new Line(
-        //    new Vector3(10, 10, 10), new Vector3(30, 30, 30));
-        //signLine.DrawDuration = 5.0f;
-        //signLine.DrawLine(() =>
-        //{
-        //    Debug.Log("finish to draw!");
-        //});
 
     }
 
-    public void AllocateStars(Vector3[] starPositions, Action onCompleteAction)
+    public void AllocateStars(Sign sign, Action onCompleteAction)
     {
+        var starPositions = sign.starPositions;
+
+        bool isLineSpawn = false;
+
         foreach(var starPosition in starPositions)
         {
             var star = instantiateStar();
@@ -52,9 +60,45 @@ public class SignControl : MonoBehaviour
                 (position) => star.transform.localPosition = position,
                 starPosition, allocateDuration);
             starTween.SetEase(easeType);
+
+            if (!isLineSpawn)
+            {
+                starTween.OnComplete(() =>
+                {
+                    allocateLines(sign);
+                });
+
+                isLineSpawn = true;
+            }
         }
 
         onCompleteAction.Invoke();
+    }
+
+    private void allocateLines(Sign sign)
+    {
+        Debug.Log(sign.lines.Length);
+        //foreach(var line in sign.lines)
+        //{
+        //    var lineControl = instantiateLine();
+
+        //    int startIndex = line.startIndex;
+        //    int endIndex = line.endIndex;
+
+        //    lineControl.LinePoints = new Line(sign.starPositions[startIndex], sign.starPositions[endIndex]);
+        //}
+        
+        for(int i = 0; i < sign.lines.Length; i++)
+        {
+            var lineControl = instantiateLine();
+
+            int startIndex = sign.lines[i].startIndex;
+            int endIndex = sign.lines[i].endIndex;
+
+            lineControl.LinePoints = new Line(
+                sign.starPositions[startIndex], sign.starPositions[endIndex]
+                );
+        }
     }
 
     private StarControl instantiateStar(GameObject starPrefab)
@@ -67,6 +111,12 @@ public class SignControl : MonoBehaviour
     {
         GameObject star = Instantiate(this.starPrefab, signTransform);
         return star.GetComponent<StarControl>();
+    }
+
+    private SignLineControl instantiateLine()
+    {
+        GameObject line = Instantiate(signLinePrefab, signTransform);
+        return line.GetComponent<SignLineControl>();
     }
 
     // Update is called once per frame

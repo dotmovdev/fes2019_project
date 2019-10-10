@@ -29,6 +29,20 @@ public class StarSphereControl : MonoBehaviour
     [SerializeField]
     private string id = "";
 
+    private Transform _spawnTransform;
+    public Transform SpawnerTransform
+    {
+        get
+        {
+            return _spawnTransform;
+        }
+
+        set
+        {
+            _spawnTransform = value;
+        }
+    }
+
     public Color SphereColor
     {
         get
@@ -52,6 +66,22 @@ public class StarSphereControl : MonoBehaviour
         set
         {
             sphereMeshRenderer.material.SetFloat("_Alpha", value);
+        }
+    }
+
+    public Vector3 VisiblePosition
+    {
+        get
+        {
+            return new Vector3(0, this.transform.localPosition.y * -1, 0);
+        }
+    }
+
+    public Quaternion ZeroQuaternion
+    {
+        get
+        {
+            return new Quaternion(0, 0, 0, 0);
         }
     }
 
@@ -97,12 +127,18 @@ public class StarSphereControl : MonoBehaviour
 
     private void createSign(Sign sign)
     {
-        GameObject signObject = Instantiate(signPrefab);
-
-        var signControl = signObject.GetComponent<SignControl>();
-        signControl.AllocateStars(sign.starPositions, () =>
+        var signControl = instantiateSign();
+        signControl.AllocateStars(sign, () =>
         {
             Debug.Log("<color=red>OnComplete: allocate stars!</color>");
         });
+    }
+
+    private SignControl instantiateSign()
+    {
+        GameObject signObject = Instantiate(signPrefab, this.transform);
+        signObject.transform.localPosition = Vector3.zero;
+        signObject.transform.localRotation = ZeroQuaternion;
+        return signObject.GetComponent<SignControl>();
     }
 }

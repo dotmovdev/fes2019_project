@@ -33,6 +33,7 @@ public class SpawnManager : MonoBehaviour
 
         //星の発生源
         GameObject starSphere = Instantiate(StarSpherePrefab, this.transform);
+        starSphere.transform.localRotation = new Quaternion(0, 0, 0, 0);
         var starSphereControl = starSphere.GetComponent<StarSphereControl>();
 
         var targetPosition = new Vector3(
