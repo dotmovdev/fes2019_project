@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class MultiScreenControl : MonoBehaviour
@@ -15,33 +17,27 @@ public class MultiScreenControl : MonoBehaviour
         }
     }
 
-    [System.Serializable]
-    public struct ScreenSetting
-    {
-        public int Width;
-        public int Height;
-    }
-
-    [Header("Screen Settings")]
-    [SerializeField]
-    private List<ScreenSetting> screenSettings = new List<ScreenSetting>();
-
     public void ActivateDisplays()
     {
-        Debug.Log(DisplayCount);
-
-        //複数ディスプレイを検知する
-        //1: メインディスプレイ, 2~:複数のサブディスプレイで横長にする。
-        //基本的にInspectorの設定に基づく
-
-        for(int i = 0; i < DisplayCount; i++)
+        for(int i = 0; i < DisplayCount && i < 2; i++)
         {
             Display.displays[i].Activate();
-
-            if (Display.displays[i].active && i <= screenSettings.Count)
-            {
-                Display.displays[i].SetRenderingResolution(screenSettings[i].Width, screenSettings[i].Height);
-            }
         }
+    }
+
+    public void FixSecondaryWindow()
+    {
+        int windowHandle;  //ウィンドウ
+
+        const String WINDOW_NAME = "fes2019";
+
+        //常に最前面に表示
+        const int HWND_TOPMOST = -1;
+        //ウィンドウを表示
+        const int SWP_SHOWWINDOW = 0x0040;
+
+        windowHandle = NativePlugin.FindWindow(null, WINDOW_NAME);
+
+        NativePlugin.SetWindowPos(windowHandle, HWND_TOPMOST, 0, 0, 1920 * 2, 1080, SWP_SHOWWINDOW);
     }
 }

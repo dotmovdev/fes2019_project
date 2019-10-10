@@ -47,16 +47,28 @@ public class GameMaster : MonoBehaviour, ISignCallback
     //最後に使用したSpawnerのIndex
     private int lastSpawnedIndex;
 
+    private void Awake()
+    {
+#if UNITY_EDITOR
+
+#else
+        MultiScreenControlRef.ActivateDisplays();
+#endif
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        //マルチスクリーン対応
-        MultiScreenControlRef.ActivateDisplays();
         //星座を保存・管理しておくクラスから通知を受け取る
         SignStorageRef.SetOnReleaceListener(this);
-
         //最初は0からスタートしたい
         lastSpawnedIndex = SpawnManagerRefs.Count - 1;
+
+#if UNITY_EDITOR
+
+#else
+        MultiScreenControlRef.FixSecondaryWindow();
+#endif
     }
 
     // Update is called once per frame
