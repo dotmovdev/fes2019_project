@@ -30,14 +30,14 @@ public class SignControl : MonoBehaviour
         }
     }
 
-    private Transform signTransform
+    public Transform SignTransform
     {
         get
         {
             return this.transform;
         }
     }
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +49,15 @@ public class SignControl : MonoBehaviour
         var starPositions = sign.starPositions;
 
         bool isLineSpawn = false;
+        int priority = 1;
 
         foreach(var starPosition in starPositions)
         {
             var star = instantiateStar();
             star.transform.localPosition = Vector3.zero;
+            star.RenderProprity = priority;
+
+            priority++;
 
             var starTween = DOTween.To(
                 () => star.transform.localPosition,
@@ -95,19 +99,19 @@ public class SignControl : MonoBehaviour
 
     private StarControl instantiateStar(GameObject starPrefab)
     {
-        GameObject star = Instantiate(starPrefab, signTransform);
+        GameObject star = Instantiate(starPrefab, SignTransform);
         return star.GetComponent<StarControl>();
     }
 
     private StarControl instantiateStar()
     {
-        GameObject star = Instantiate(this.starPrefab, signTransform);
+        GameObject star = Instantiate(this.starPrefab, SignTransform);
         return star.GetComponent<StarControl>();
     }
 
     private SignLineControl instantiateLine()
     {
-        GameObject line = Instantiate(signLinePrefab, signTransform);
+        GameObject line = Instantiate(signLinePrefab, SignTransform);
         return line.GetComponent<SignLineControl>();
     }
 

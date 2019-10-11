@@ -38,6 +38,8 @@ public class StarSphereControl : MonoBehaviour
     [Header("Event")]
     public SignEvent OnCompleteCreateSign = new SignEvent();
 
+    private bool headToCenter = false;
+
     private Transform _spawnTransform;
     public Transform SpawnerTransform
     {
@@ -94,9 +96,28 @@ public class StarSphereControl : MonoBehaviour
         }
     }
 
+    private GameMaster gameMasterRef;
+
+    private Vector3 CenterNormalDirection
+    {
+        get
+        {
+            var direction = this.transform.localPosition - gameMasterRef.CenterTransform.position;
+            return direction.normalized;
+        }
+    }
+
     private void Start()
     {
+        gameMasterRef = GameObject.Find("GameMaster").GetComponent<GameMaster>();
+    }
 
+    private void Update()
+    {
+        if (headToCenter)
+        {
+            this.transform.localPosition -= CenterNormalDirection * 0.0015f;
+        }
     }
 
     public void PlayBurst()
@@ -131,6 +152,8 @@ public class StarSphereControl : MonoBehaviour
             //星座を作る
             createSign(sign);
         });
+
+        onCompleteAction.Invoke();
     }
 
     private void createSign(Sign sign)
@@ -144,14 +167,24 @@ public class StarSphereControl : MonoBehaviour
 
     private IEnumerator drawLinesCoroutine(SignControl signControl)
     {
-        foreach (var line in signControl.SignLines)
+        for(int i = 0; i < signControl.SignLines.Count; i++)
         {
-            line.DrawLine(() => { Debug.Log("line is drawn."); });
+            if (i != signControl.SignLines.Count - 1)
+            {
+                signControl.SignLines[i].DrawLine(() => { });
+            }
+            else
+            {
+                signControl.SignLines[i].DrawLine(() =>
+                {
+                    headToCenter = true;
+                    //最後だけコールバック
+                    OnCompleteCreateSign.Invoke();
+                });
+            }
 
             yield return new WaitForSeconds(0.1f);
         }
-
-        OnCompleteCreateSign.Invoke();
     }
 
     private SignControl instantiateSign()

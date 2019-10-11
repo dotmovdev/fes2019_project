@@ -56,11 +56,29 @@ public class GameMaster : MonoBehaviour, ISignCallback
         }
     }
 
+    [SerializeField]
+    private MaterialCacheManager lineCache;
+    [SerializeField]
+    private MaterialCacheManager starCache;
+
+    [Header("Debug")]
+    [SerializeField]
+    private GameObject TestObjectTree;
+
     //最後に使用したSpawnerのIndex
     private int lastSpawnedIndex;
 
     private void Awake()
     {
+        for(int i = 0; i < 5; i++)
+        {
+            starCache.Add("_HighlightColor", new Color(
+                Random.Range(0.0f, 1.0f),
+                Random.Range(0.0f, 1.0f),
+                Random.Range(0.0f, 1.0f)
+                ));
+        }
+
 #if UNITY_EDITOR
 
 #else
@@ -71,6 +89,8 @@ public class GameMaster : MonoBehaviour, ISignCallback
     // Start is called before the first frame update
     void Start()
     {
+        Destroy(TestObjectTree);
+
         //星座を保存・管理しておくクラスから通知を受け取る
         SignStorageRef.SetOnReleaceListener(this);
         //最初は0からスタートしたい

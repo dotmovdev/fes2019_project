@@ -21,10 +21,17 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    private static GameMaster gameMasterRef;
+
     [SerializeField]
     private bool isSpawning = false;
     [SerializeField]
     private GameObject StarSpherePrefab;
+
+    private void Start()
+    {
+        gameMasterRef = GameObject.Find("GameMaster").GetComponent<GameMaster>();
+    }
 
     //星座のデータを受け取って、Spawnを開始する関数
     public void StartSpawn(string id, Sign sign)
@@ -41,7 +48,14 @@ public class SpawnManager : MonoBehaviour
             );
         starSphereControl.Spawn(id, sign, Vector3.zero, targetPosition, () =>
         {
+            Debug.LogFormat("<color=red>SpawnSignID: {0}</color>", id);
+        });
+
+        //フラグのリセットを任せる
+        starSphereControl.OnCompleteCreateSign.AddListener(() =>
+        {
             isSpawning = false;
+            starSphereControl.transform.parent = gameMasterRef.CenterTransform;
         });
     }
 }

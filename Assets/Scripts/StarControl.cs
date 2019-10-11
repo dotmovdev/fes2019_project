@@ -34,6 +34,18 @@ public class StarControl : MonoBehaviour
             meshRenderer.material.SetFloat("_BrightSeed", value);
         }
     }
+    public int RenderProprity
+    {
+        get
+        {
+            return meshRenderer.rendererPriority;
+        }
+
+        set
+        {
+            meshRenderer.rendererPriority = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
