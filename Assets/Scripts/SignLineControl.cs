@@ -68,7 +68,7 @@ public class SignLineControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitLineRenderer();
+
     }
 
     // Update is called once per frame

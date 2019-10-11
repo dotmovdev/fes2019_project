@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;
+using UnityEngine.Events;
 using DG.Tweening;
 using SignExtensions;
+
+public class SignEvent : UnityEvent
+{
+
+}
 
 public class StarSphereControl : MonoBehaviour
 {
@@ -28,6 +34,9 @@ public class StarSphereControl : MonoBehaviour
     private Ease easeType;
     [SerializeField]
     private string id = "";
+
+    [Header("Event")]
+    public SignEvent OnCompleteCreateSign = new SignEvent();
 
     private Transform _spawnTransform;
     public Transform SpawnerTransform
@@ -121,7 +130,6 @@ public class StarSphereControl : MonoBehaviour
 
             //星座を作る
             createSign(sign);
-            //コールバッグでフラグリセット
         });
     }
 
@@ -130,8 +138,20 @@ public class StarSphereControl : MonoBehaviour
         var signControl = instantiateSign();
         signControl.AllocateStars(sign, () =>
         {
-            Debug.Log("<color=red>OnComplete: allocate stars!</color>");
+            StartCoroutine(drawLinesCoroutine(signControl));            
         });
+    }
+
+    private IEnumerator drawLinesCoroutine(SignControl signControl)
+    {
+        foreach (var line in signControl.SignLines)
+        {
+            line.DrawLine(() => { Debug.Log("line is drawn."); });
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        OnCompleteCreateSign.Invoke();
     }
 
     private SignControl instantiateSign()

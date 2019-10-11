@@ -66,27 +66,17 @@ public class SignControl : MonoBehaviour
                 starTween.OnComplete(() =>
                 {
                     allocateLines(sign);
+                    onCompleteAction.Invoke();
                 });
 
                 isLineSpawn = true;
             }
         }
-
-        onCompleteAction.Invoke();
     }
 
     private void allocateLines(Sign sign)
     {
         Debug.Log(sign.lines.Length);
-        //foreach(var line in sign.lines)
-        //{
-        //    var lineControl = instantiateLine();
-
-        //    int startIndex = line.startIndex;
-        //    int endIndex = line.endIndex;
-
-        //    lineControl.LinePoints = new Line(sign.starPositions[startIndex], sign.starPositions[endIndex]);
-        //}
         
         for(int i = 0; i < sign.lines.Length; i++)
         {
@@ -98,6 +88,8 @@ public class SignControl : MonoBehaviour
             lineControl.LinePoints = new Line(
                 sign.starPositions[startIndex], sign.starPositions[endIndex]
                 );
+
+            signLines.Add(lineControl);
         }
     }
 

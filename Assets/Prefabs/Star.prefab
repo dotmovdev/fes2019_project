@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4870630974376497235}
   - component: {fileID: 8619268708153306082}
   m_Layer: 0
-  m_Name: StarPrefab
+  m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 1
-  m_RendererPriority: 0
+  m_RendererPriority: 1
   m_Materials:
   - {fileID: 2100000, guid: 08b0389213b55c44ba6bdb67bfd24e1c, type: 2}
   m_StaticBatchInfo:

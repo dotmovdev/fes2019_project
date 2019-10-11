@@ -5,6 +5,7 @@ using SignExtensions;
 
 public class GameMaster : MonoBehaviour, ISignCallback
 {
+    [Header("References")]
     [SerializeField]
     private MainCameraControl mainCameraControlRef;
     public MainCameraControl MainCameraControlRef
@@ -44,6 +45,17 @@ public class GameMaster : MonoBehaviour, ISignCallback
             return spawnManagerRefs;
         }
     }
+
+    [SerializeField]
+    private Transform centerTransform;
+    public Transform CenterTransform
+    {
+        get
+        {
+            return centerTransform;
+        }
+    }
+
     //最後に使用したSpawnerのIndex
     private int lastSpawnedIndex;
 
