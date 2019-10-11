@@ -242,13 +242,13 @@ VisualEffect:
       m_Array: []
     m_Vector2f:
       m_Array:
-      - m_Value: {x: 1.55, y: 0.91}
+      - m_Value: {x: 0, y: 0}
         m_Name: BodyColor_R
         m_Overridden: 1
-      - m_Value: {x: 1.02, y: 3.89}
+      - m_Value: {x: 0, y: 0}
         m_Name: BodyColor_G
         m_Overridden: 1
-      - m_Value: {x: 8.98, y: 5.42}
+      - m_Value: {x: 0, y: 0}
         m_Name: BodyColor_B
         m_Overridden: 1
     m_Vector3f:
@@ -259,7 +259,7 @@ VisualEffect:
       - m_Value: {x: 17.42, y: 13.1, z: 0}
         m_Name: Edge_Mist_Color
         m_Overridden: 1
-      - m_Value: {x: 0.6, y: 0.66, z: 0}
+      - m_Value: {x: 0, y: 0, z: 0}
         m_Name: EdgeMistColor
         m_Overridden: 1
     m_Vector4f:
@@ -363,9 +363,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 519802585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8e1817df77d4e44692cc7a798fe2153, type: 3}
+  m_Script: {fileID: 11500000, guid: 600207e11e7879744943a97aeca6c029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_galaxyColor: {fileID: 11400000, guid: 451f4c1c91f21c14aaf87b21905c4c8c, type: 2}
+  orbitalVisualEffect: {fileID: 0}
 --- !u!1 &1486147476
 GameObject:
   m_ObjectHideFlags: 0
