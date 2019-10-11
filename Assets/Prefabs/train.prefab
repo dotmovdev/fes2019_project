@@ -4764,7 +4764,7 @@ Transform:
   m_GameObject: {fileID: 7690311424886024865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 69.17878, y: 165.47318, z: 24.159283}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 526438436855238490}
   - {fileID: 1245025928241803738}
@@ -4804,8 +4804,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   road_prefab: {fileID: 604853351806837611, guid: 02182028c126f7b41a06349a60185535,
     type: 3}
-  interval: 0.3
-  offset: 20
+  interval: 0.15
+  offset: 11
   VFX: {fileID: 923170926881240529}
   AC:
     serializedVersion: 2

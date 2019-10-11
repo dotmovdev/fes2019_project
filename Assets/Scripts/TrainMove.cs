@@ -44,7 +44,7 @@ public class TrainMove : MonoBehaviour
             if (callRoad == true)
             {
                 Vector3 dir = Vector3.Normalize(direction);
-                CreateRoad(transform.position + (transform.forward * offset) + (transform.up * -3f), dir);
+                CreateRoad(transform.position + (transform.forward * offset) + (transform.up * -1.5f), dir);
 
             }
         }
@@ -71,7 +71,6 @@ public class TrainMove : MonoBehaviour
     private void Dissolve_andDestroy()
     {
 
-        
         foreach (Renderer render in BodyRender)
         {
             if (render.material.HasProperty("_alpha"))
@@ -123,7 +122,6 @@ public class TrainMove : MonoBehaviour
 
         foreach (Renderer render in BodyRender)
         {
-
             if (render.material.HasProperty("_alpha"))
             {
                 render.material.SetFloat("_alpha", 0);
@@ -139,35 +137,12 @@ public class TrainMove : MonoBehaviour
                     }).OnComplete(
                     () => {
                         Dissolve_andDestroy();
-                        
                     }
                     );//移動時間の1割の秒数で出てくる
             }
         }
 
     }
-
-
-    //始点と終点を指定するタイプのメモ
-    //private void Do()
-    //{
-    //    //終わったらデストロイ
-    //    transform.DOMove(Goal_pos, MovingTime).OnComplete(() =>
-    //    {
-    //        Destroy(this.gameObject);
-    //    }).OnUpdate(() =>
-    //    {
-    //        //進行方向を向く
-    //        Vector3 dirVec = this.gameObject.transform.position - pre_pos;
-    //        Debug.Log(pre_pos);
-    //        Debug.Log(this.gameObject.transform.position);
-    //        direction = dirVec.normalized;
-    //        pre_pos = this.transform.position;
-
-    //        //Instatiateされたら走り続ける
-    //        transform.rotation = Quaternion.LookRotation(direction);
-    //    });
-    //}
 
     
 }
