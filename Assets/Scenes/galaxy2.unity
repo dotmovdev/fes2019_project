@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 519802588}
   - component: {fileID: 519802587}
   - component: {fileID: 519802586}
+  - component: {fileID: 519802589}
   m_Layer: 0
   m_Name: orbital4
   m_TagString: Untagged
@@ -240,9 +241,27 @@ VisualEffect:
     m_Float:
       m_Array: []
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 1.55, y: 0.91}
+        m_Name: BodyColor_R
+        m_Overridden: 1
+      - m_Value: {x: 1.02, y: 3.89}
+        m_Name: BodyColor_G
+        m_Overridden: 1
+      - m_Value: {x: 8.98, y: 5.42}
+        m_Name: BodyColor_B
+        m_Overridden: 1
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 11.63, y: -3.69, z: -21.36}
+        m_Name: Select_Color
+        m_Overridden: 1
+      - m_Value: {x: 17.42, y: 13.1, z: 0}
+        m_Name: Edge_Mist_Color
+        m_Overridden: 1
+      - m_Value: {x: 0.6, y: 0.66, z: 0}
+        m_Name: EdgeMistColor
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
@@ -254,7 +273,69 @@ VisualEffect:
     m_AnimationCurve:
       m_Array: []
     m_Gradient:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 1.8301886, g: 1.3804351, b: 0.7855998, a: 0.5803922}
+          key1: {r: 3.482353, g: 3.1058824, b: 1.6627451, a: 0.64705884}
+          key2: {r: 0, g: 0, b: 0, a: 0}
+          key3: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 65535
+          ctime2: 0
+          ctime3: 0
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 14456
+          atime1: 46260
+          atime2: 65535
+          atime3: 65535
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_NumColorKeys: 2
+          m_NumAlphaKeys: 2
+        m_Name: CenterMistColor
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.04109436, g: 0.033374876, b: 0.05660379, a: 1}
+          key1: {r: 0.087910086, g: 0.06541474, b: 0.13207549, a: 0.8}
+          key2: {r: 0, g: 0, b: 0, a: 0}
+          key3: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 65535
+          ctime2: 0
+          ctime3: 0
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 6554
+          atime1: 52428
+          atime2: 65535
+          atime3: 65535
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_NumColorKeys: 2
+          m_NumAlphaKeys: 2
+        m_Name: SpiralColor
+        m_Overridden: 1
     m_NamedObject:
       m_Array: []
     m_Bool:
@@ -273,6 +354,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -15.46, y: 0, z: -2.96}
+--- !u!114 &519802589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519802585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e1817df77d4e44692cc7a798fe2153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1486147476
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,10 +881,7 @@ VFXRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -820,7 +910,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697459392}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: e2bf1bdf73236574fb339d3bce93cf87, type: 3}
+  m_Asset: {fileID: 0}
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_PropertySheet:
