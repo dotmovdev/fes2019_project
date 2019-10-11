@@ -21,22 +21,22 @@ namespace SignExtensions
     {
         public static readonly Color[] StarColor = new Color[6]
         {
-            new Color(150, 201,  98),
-            new Color(  0, 205, 255),
-            new Color(240, 135,  33),
-            new Color(209, 118, 172),
-            new Color(255, 241,   0),
-            new Color(255, 241,   0),
+            new Color(150f / 255f, 201f / 255f,  98f / 255f),
+            new Color(  0f / 255f, 205f / 255f, 255f / 255f),
+            new Color(240f / 255f, 135f / 255f,  33f / 255f),
+            new Color(209f / 255f, 118f / 255f, 172f / 255f),
+            new Color(255f / 255f, 241f / 255f,   0f / 255f),
+            new Color(255f / 255f, 241f / 255f,   0f / 255f),
         };
 
         public static readonly Color[] LineColor = new Color[6]
         {
-            new Color(255, 255,  73),
-            new Color(255, 255,  73),
-            new Color(255, 255,  73),
-            new Color(255, 255,  73),
-            new Color(223, 153,  31),
-            new Color( 29, 219, 255),
+            new Color(255f / 255f, 255f / 255f,  73f / 255f),
+            new Color(255f / 255f, 255f / 255f,  73f / 255f),
+            new Color(255f / 255f, 255f / 255f,  73f / 255f),
+            new Color(255f / 255f, 255f / 255f,  73f / 255f),
+            new Color(223f / 255f, 153f / 255f,  31f / 255f),
+            new Color( 29f / 255f, 219f / 255f, 255f / 255f),
         };
 
         public ColorSet GetColorSet(int index)

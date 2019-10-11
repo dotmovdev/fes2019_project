@@ -172,7 +172,7 @@ public class StarSphereControl : MonoBehaviour
         var signControl = instantiateSign();
         signControl.AllocateStars(sign, () =>
         {
-            StartCoroutine(drawLinesCoroutine(signControl));            
+            StartCoroutine(drawLinesCoroutine(signControl));
         });
     }
 

@@ -58,9 +58,9 @@ public class SignControl : MonoBehaviour
         foreach(var starPosition in starPositions)
         {
             var star = instantiateStar();
+            star.Material = gameMasterRef.StarCache[sign.colorIndex];
             star.transform.localPosition = Vector3.zero;
             star.RenderProprity = priority;
-            star.Material = gameMasterRef.StarCache[sign.colorIndex];
 
             priority++;
 
@@ -91,6 +91,7 @@ public class SignControl : MonoBehaviour
         {
             var lineControl = instantiateLine();
             lineControl.Material = gameMasterRef.LineCache[sign.colorIndex];
+            Debug.LogFormat("ColorIndex: {0}", sign.colorIndex);
 
             int startIndex = sign.lines[i].startIndex;
             int endIndex = sign.lines[i].endIndex;

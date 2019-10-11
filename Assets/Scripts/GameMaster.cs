@@ -57,8 +57,8 @@ public class GameMaster : MonoBehaviour, ISignCallback
     }
 
     [SerializeField]
-    private MaterialCacheManager lineCache;
-    public MaterialCacheManager LineCache
+    private LineMaterialCacheManager lineCache;
+    public LineMaterialCacheManager LineCache
     {
         get
         {
@@ -67,8 +67,8 @@ public class GameMaster : MonoBehaviour, ISignCallback
     }
 
     [SerializeField]
-    private MaterialCacheManager starCache;
-    public MaterialCacheManager StarCache
+    private MeshMaterialCacheManager starCache;
+    public MeshMaterialCacheManager StarCache
     {
         get
         {
