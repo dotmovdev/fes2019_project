@@ -38,14 +38,19 @@ public class SignControl : MonoBehaviour
             return this.transform;
         }
     }
-    
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         if (gameMasterRef == null)
         {
             gameMasterRef = GameObject.Find("GameMaster").GetComponent<GameMaster>();
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
 
     public void AllocateStars(Sign sign, Action onCompleteAction)
@@ -55,7 +60,7 @@ public class SignControl : MonoBehaviour
         bool isLineSpawn = false;
         int priority = 1;
 
-        foreach(var starPosition in starPositions)
+        for(int i = 0; i < starPositions.Length; i++)
         {
             var star = instantiateStar();
             star.Material = gameMasterRef.StarCache[sign.colorIndex];
@@ -67,7 +72,7 @@ public class SignControl : MonoBehaviour
             var starTween = DOTween.To(
                 () => star.transform.localPosition,
                 (position) => star.transform.localPosition = position,
-                starPosition, allocateDuration);
+                starPositions[i], allocateDuration);
             starTween.SetEase(easeType);
 
             if (!isLineSpawn)

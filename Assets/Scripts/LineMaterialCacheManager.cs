@@ -28,6 +28,7 @@ public class LineMaterialCacheManager : MonoBehaviour
     public void Add(string name, Color color)
     {
         GameObject cache = Instantiate(cachedPrefab, this.transform);
+        cache.gameObject.name += "[Cache]";
 
         var renderer = cache.GetComponent<LineRenderer>();
         renderer.material.SetColor(name, color);

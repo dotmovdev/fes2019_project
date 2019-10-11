@@ -28,6 +28,7 @@ public class MeshMaterialCacheManager : MonoBehaviour
     public void Add(string name, Color color)
     {
         GameObject cache = Instantiate(cachedPrefab, this.transform);
+        cache.gameObject.name += "[Cache]";
 
         var renderer = cache.GetComponent<MeshRenderer>();
         renderer.material.SetColor(name, color);
