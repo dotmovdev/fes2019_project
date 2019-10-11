@@ -29,6 +29,8 @@ public class StarSphereControl : MonoBehaviour
 
     [Header("SpawnParameters")]
     [SerializeField]
+    private float headSpeedScale = 0.5f;
+    [SerializeField]
     private float spawnDuration = 1.0f;
     [SerializeField]
     private Ease easeType;
@@ -116,7 +118,16 @@ public class StarSphereControl : MonoBehaviour
     {
         if (headToCenter)
         {
-            this.transform.localPosition -= CenterNormalDirection * 0.0015f;
+            this.transform.localPosition -= CenterNormalDirection * headSpeedScale;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (headToCenter)
+        {
+            headToCenter = false;
+            this.transform.parent = other.gameObject.transform;
         }
     }
 

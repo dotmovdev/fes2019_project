@@ -58,8 +58,41 @@ public class GameMaster : MonoBehaviour, ISignCallback
 
     [SerializeField]
     private MaterialCacheManager lineCache;
+    public MaterialCacheManager LineCache
+    {
+        get
+        {
+            return lineCache;
+        }
+    }
+
     [SerializeField]
     private MaterialCacheManager starCache;
+    public MaterialCacheManager StarCache
+    {
+        get
+        {
+            return starCache;
+        }
+    }
+
+    [SerializeField]
+    private StarMassControl starMassControl;
+    public StarMassControl StarMassControlRef
+    {
+        get
+        {
+            return starMassControl;
+        }
+    }
+
+    public Transform StarMassTransform
+    {
+        get
+        {
+            return starMassControl.transform;
+        }
+    }
 
     [Header("Debug")]
     [SerializeField]
@@ -70,13 +103,14 @@ public class GameMaster : MonoBehaviour, ISignCallback
 
     private void Awake()
     {
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < SignColor.StarColor.Length; i++)
         {
-            starCache.Add("_HighlightColor", new Color(
-                Random.Range(0.0f, 1.0f),
-                Random.Range(0.0f, 1.0f),
-                Random.Range(0.0f, 1.0f)
-                ));
+            starCache.Add("_HighlightColor", SignColor.StarColor[i]);
+        }
+
+        for (int i = 0; i < SignColor.LineColor.Length; i++)
+        {
+            lineCache.Add("_HighlightColor", SignColor.LineColor[i]);
         }
 
 #if UNITY_EDITOR

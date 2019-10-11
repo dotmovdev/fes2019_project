@@ -20,6 +20,7 @@ public class SignControl : MonoBehaviour
     private Ease easeType;
 
     private static float signScale = 1.0f;
+    private static GameMaster gameMasterRef;
 
     private List<SignLineControl> signLines = new List<SignLineControl>();
     public List<SignLineControl> SignLines
@@ -41,7 +42,10 @@ public class SignControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (gameMasterRef == null)
+        {
+            gameMasterRef = GameObject.Find("GameMaster").GetComponent<GameMaster>();
+        }
     }
 
     public void AllocateStars(Sign sign, Action onCompleteAction)
@@ -56,6 +60,7 @@ public class SignControl : MonoBehaviour
             var star = instantiateStar();
             star.transform.localPosition = Vector3.zero;
             star.RenderProprity = priority;
+            star.Material = gameMasterRef.StarCache[sign.colorIndex];
 
             priority++;
 
@@ -85,6 +90,7 @@ public class SignControl : MonoBehaviour
         for(int i = 0; i < sign.lines.Length; i++)
         {
             var lineControl = instantiateLine();
+            lineControl.Material = gameMasterRef.LineCache[sign.colorIndex];
 
             int startIndex = sign.lines[i].startIndex;
             int endIndex = sign.lines[i].endIndex;

@@ -47,6 +47,14 @@ public class StarControl : MonoBehaviour
         }
     }
 
+    public Material Material
+    {
+        set
+        {
+            meshRenderer.material = value;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

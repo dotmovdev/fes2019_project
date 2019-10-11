@@ -51,6 +51,14 @@ public class SignLineControl : MonoBehaviour
         }
     }
 
+    public Material Material
+    {
+        set
+        {
+            lineRenderer.material = value;
+        }
+    }
+
     private Vector3 endPointPosition = new Vector3(0, 0, 0);
 
     //すべて座標を0に置き換える。
