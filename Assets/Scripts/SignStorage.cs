@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using SignExtensions;
 using System.Linq;
 
@@ -11,6 +12,10 @@ public interface ISignCallback
 
 public class SignStorage : MonoBehaviour
 {
+    [Header("星座を送信する先のアドレス")]
+    [SerializeField]
+    private string url = "http://team-mov.com/fes2019/upload.php";
+
     private Dictionary<string, Sign> signStorage = new Dictionary<string, Sign>();
 
     private ISignCallback callback = null;
@@ -71,8 +76,21 @@ public class SignStorage : MonoBehaviour
 
                 callback.OnReceived(id, sign);
                 signStorage.Remove(id);
+
+                StartCoroutine(UploadToWeb(url, sign.ToSimpleSign()));
             }
             requestBuffer.Clear();
         }
+    }
+
+    IEnumerator UploadToWeb(string url, SimpleSign sign)
+    {
+        string jsonString = JsonUtility.ToJson(sign);
+        byte[] postData = System.Text.Encoding.UTF8.GetBytes(jsonString);
+        var request = new UnityWebRequest(url, "POST");
+        request.uploadHandler = new UploadHandlerRaw(postData);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        yield return request.Send();
     }
 }

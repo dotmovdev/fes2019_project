@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using WebSocketExtensions;
 using WebSocketSharp.Server;
 using SignExtensions;
@@ -77,5 +78,10 @@ public class Server : MonoBehaviour, ISign {
             server.Stop();
         server = null;
         }
+    }
+
+    void UploadToWeb(string url, Sign sign)
+    {
+
     }
 }
