@@ -19,10 +19,10 @@ public class MultiScreenControl : MonoBehaviour
 
     public void ActivateDisplays()
     {
-        for(int i = 0; i < DisplayCount && i < 2; i++)
-        {
-            Display.displays[i].Activate();
-        }
+        //for(int i = 0; i < DisplayCount && i < 2; i++)
+        //{
+        //    Display.displays[i].Activate();
+        //}
     }
 
     public void FixSecondaryWindow()

@@ -16,7 +16,7 @@ public struct Line
     }
 }
 
-public class ConstellationLineControl : MonoBehaviour
+public class SignLineControl : MonoBehaviour
 {
     [SerializeField]
     private LineRenderer lineRenderer;
@@ -27,6 +27,7 @@ public class ConstellationLineControl : MonoBehaviour
     {
         set
         {
+            Debug.Log(lineRenderer.positionCount);
             for(int i = 0; i < lineRenderer.positionCount; i++)
             {
                 lineRenderer.SetPosition(i, value.Start);
@@ -50,6 +51,14 @@ public class ConstellationLineControl : MonoBehaviour
         }
     }
 
+    public Material Material
+    {
+        set
+        {
+            lineRenderer.material = value;
+        }
+    }
+
     private Vector3 endPointPosition = new Vector3(0, 0, 0);
 
     //すべて座標を0に置き換える。
@@ -67,7 +76,7 @@ public class ConstellationLineControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitLineRenderer();
+
     }
 
     // Update is called once per frame

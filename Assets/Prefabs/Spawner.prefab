@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6613014949214096030}
   - component: {fileID: 6613014949214096029}
   m_Layer: 0
-  m_Name: Spawner(0)
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpawning: 0
-  StarSpherePrefab: {fileID: 2892310351183609145, guid: d17c39fc8d905f247bdf28d9f536d64e,
+  StarSpherePrefab: {fileID: 8261898109252688284, guid: 2c763edf7c171c4469d59554704b71c3,
     type: 3}

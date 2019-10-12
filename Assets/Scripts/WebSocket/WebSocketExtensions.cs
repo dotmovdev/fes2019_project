@@ -40,6 +40,7 @@ namespace WebSocketExtensions {
         }
 
         protected override void OnMessage (MessageEventArgs e) {
+            Debug.Log(e.Data);
             if (callback != null) {
                 string[] splitted = e.Data.Split('|');
 

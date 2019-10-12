@@ -5,6 +5,46 @@ using UnityEngine;
 
 namespace SignExtensions
 {
+    public struct ColorSet
+    {
+        public Color starColor;
+        public Color lineColor;
+
+        public ColorSet (Color starColor, Color lineColor)
+        {
+            this.starColor = starColor;
+            this.lineColor = lineColor;
+        }
+}
+
+    public struct SignColor
+    {
+        public static readonly Color[] StarColor = new Color[6]
+        {
+            new Color(150f / 255f, 201f / 255f,  98f / 255f),
+            new Color(  0f / 255f, 205f / 255f, 255f / 255f),
+            new Color(240f / 255f, 135f / 255f,  33f / 255f),
+            new Color(209f / 255f, 118f / 255f, 172f / 255f),
+            new Color(255f / 255f, 241f / 255f,   0f / 255f),
+            new Color(255f / 255f, 241f / 255f,   0f / 255f),
+        };
+
+        public static readonly Color[] LineColor = new Color[6]
+        {
+            new Color(255f / 255f, 255f / 255f,  73f / 255f),
+            new Color(255f / 255f, 255f / 255f,  73f / 255f),
+            new Color(255f / 255f, 255f / 255f,  73f / 255f),
+            new Color(255f / 255f, 255f / 255f,  73f / 255f),
+            new Color(223f / 255f, 153f / 255f,  31f / 255f),
+            new Color( 29f / 255f, 219f / 255f, 255f / 255f),
+        };
+
+        public ColorSet GetColorSet(int index)
+        {
+            return new ColorSet(StarColor[index], LineColor[index]);
+        }
+    } 
+
     public struct Line
     {
         internal int startIndex;
@@ -94,6 +134,32 @@ namespace SignExtensions
     {
         internal Vector3[] starPositions;
         internal Line[] lines;
+        internal int colorIndex;
+
+        public SimpleSign ToSimpleSign()
+        {
+            SimpleSign simpleSign = new SimpleSign();
+            int starLength = starPositions.Length * 3;
+            simpleSign.starPositions = new float[starLength];
+            for (int i = 0; i < starPositions.Length; i++)
+            {
+                simpleSign.starPositions[i * 3] = starPositions[i].x;
+                simpleSign.starPositions[i * 3 + 1] = starPositions[i].y;
+                simpleSign.starPositions[i * 3 + 2] = starPositions[i].z;
+            }
+
+            int lineLength = lines.Length * 2;
+            simpleSign.lines = new int[lineLength];
+            for (int i = 0; i < lines.Length; i++)
+            {
+                simpleSign.lines[i * 2] = lines[i].startIndex;
+                simpleSign.lines[i * 2 + 1] = lines[i].endIndex;
+            }
+
+            simpleSign.colorIndex = colorIndex;
+
+            return simpleSign;
+        }
     }
 
     [Serializable]
@@ -101,6 +167,7 @@ namespace SignExtensions
     {
         public float[] starPositions;
         public int[] lines;
+        public int colorIndex;
 
         public Sign ToSign()
         {
@@ -124,6 +191,8 @@ namespace SignExtensions
                 sign.lines[i].startIndex = lines[i * 2 + 0];
                 sign.lines[i].endIndex = lines[i * 2 + 1];
             }
+
+            sign.colorIndex = colorIndex;
 
             return sign;
         }
