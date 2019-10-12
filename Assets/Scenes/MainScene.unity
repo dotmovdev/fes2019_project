@@ -207,6 +207,8 @@ GameObject:
   - component: {fileID: 273315928}
   - component: {fileID: 273315927}
   - component: {fileID: 273315926}
+  - component: {fileID: 273315931}
+  - component: {fileID: 273315930}
   m_Layer: 0
   m_Name: orbital4
   m_TagString: Untagged
@@ -393,6 +395,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 12.4, y: 0, z: 9.24}
+--- !u!114 &273315930
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273315925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Parameter:
+    m_Name: Position
+  Target: {fileID: 1409148973}
+--- !u!114 &273315931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273315925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings:
+  - {fileID: 273315930}
+  m_VisualEffect: {fileID: 273315928}
 --- !u!1 &382296334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,6 +1135,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cachedPrefab: {fileID: 2120702812845245876, guid: 40432dda1a57d6a4890c6ed07c11c710,
     type: 3}
+--- !u!4 &1409148973 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3587818776006943267, guid: 3776d59fc6983f34f872621080645aa5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6783091636238182414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1428061920
 GameObject:
   m_ObjectHideFlags: 0
