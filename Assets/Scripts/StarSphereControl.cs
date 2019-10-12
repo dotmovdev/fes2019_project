@@ -24,6 +24,14 @@ public class StarSphereControl : MonoBehaviour
     [Header("Sphere")]
     [SerializeField]
     private MeshRenderer sphereMeshRenderer;
+    public MeshRenderer MeshRenderer
+    {
+        get
+        {
+            return sphereMeshRenderer;
+        }
+    }
+
     [SerializeField]
     private GameObject internalStar;
 

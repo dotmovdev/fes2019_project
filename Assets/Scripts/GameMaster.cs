@@ -100,8 +100,8 @@ public class GameMaster : MonoBehaviour, ISignCallback
 
     [Header("Caches")]
     [SerializeField]
-    private LineMaterialCacheManager lineCache;
-    public LineMaterialCacheManager LineCache
+    private MaterialCacheManager lineCache;
+    public MaterialCacheManager LineCache
     {
         get
         {
@@ -110,12 +110,32 @@ public class GameMaster : MonoBehaviour, ISignCallback
     }
 
     [SerializeField]
-    private MeshMaterialCacheManager starCache;
-    public MeshMaterialCacheManager StarCache
+    private MaterialCacheManager starCache;
+    public MaterialCacheManager StarCache
     {
         get
         {
             return starCache;
+        }
+    }
+
+    [SerializeField]
+    private MaterialCacheManager starSphereCache;
+    public MaterialCacheManager StarSphereCache
+    {
+        get
+        {
+            return starSphereCache;
+        }
+    }
+
+    [SerializeField]
+    private MaterialCacheManager nonBillboardCache;
+    public MaterialCacheManager NonBillboardCache
+    {
+        get
+        {
+            return nonBillboardCache;
         }
     }
 
@@ -131,6 +151,8 @@ public class GameMaster : MonoBehaviour, ISignCallback
         for (int i = 0; i < SignColor.StarColor.Length; i++)
         {
             starCache.Add("_HighlightColor", SignColor.StarColor[i]);
+            starSphereCache.Add("_BorderColor", SignColor.StarColor[i]);
+            nonBillboardCache.Add("_BorderColor", SignColor.StarColor[i]);
         }
 
         for (int i = 0; i < SignColor.LineColor.Length; i++)
