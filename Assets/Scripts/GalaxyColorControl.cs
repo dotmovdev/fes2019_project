@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;
 
-
+#if UNITY_EDITOR
+[ExecuteInEditMode]
+#endif
 public class GalaxyColorControl : MonoBehaviour
 {
     public GalaxyColor m_galaxyColor;
