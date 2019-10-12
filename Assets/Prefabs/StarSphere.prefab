@@ -62,7 +62,7 @@ MonoBehaviour:
   spawnEffect: {fileID: 8854024329803522101}
   sphereMeshRenderer: {fileID: 4970566616003126540}
   internalStar: {fileID: 5856146711170451721}
-  headSpeedScale: 0.5
+  headSpeedScale: 0.01
   spawnDuration: 1.5
   easeType: 0
   id: 
@@ -239,7 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cbab4fc2fe163845bc9a9aab6be9b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 6680295349973332556}
+  renderer: {fileID: 0}
+  material: {fileID: 0}
 --- !u!1 &7250982418164382459
 GameObject:
   m_ObjectHideFlags: 0

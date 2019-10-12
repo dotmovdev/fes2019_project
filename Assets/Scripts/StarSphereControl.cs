@@ -29,7 +29,7 @@ public class StarSphereControl : MonoBehaviour
 
     [Header("SpawnParameters")]
     [SerializeField]
-    private float headSpeedScale = 0.5f;
+    private float headSpeedScale = 0.005f;
     [SerializeField]
     private float spawnDuration = 1.0f;
     [SerializeField]

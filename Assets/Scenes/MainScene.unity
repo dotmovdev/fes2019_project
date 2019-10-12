@@ -307,7 +307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273315925}
   m_LocalRotation: {x: 0.10764846, y: -0.0086990055, z: 0.0800757, w: 0.99092084}
-  m_LocalPosition: {x: 34.5, y: -24.1, z: 31.1}
+  m_LocalPosition: {x: 37.1, y: -36.5, z: 51.5}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
@@ -780,6 +780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31665d455fb5184bb97db3efe05cff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scale: 0.65
+  offset: {x: 0, y: 0, z: 0}
   mainCameraControlRef: {fileID: 1126187991}
   multiScreenControlRef: {fileID: 742775545}
   signStorageRef: {fileID: 382296336}
@@ -787,10 +789,11 @@ MonoBehaviour:
   - {fileID: 2081517685}
   - {fileID: 1428712938}
   - {fileID: 590179354}
+  starMassControlRef: {fileID: 1799320077}
+  galaxyColorControlRef: {fileID: 273315926}
   centerTransform: {fileID: 259945982}
   lineCache: {fileID: 1069560902}
   starCache: {fileID: 1457993966}
-  starMassControl: {fileID: 1799320077}
   TestObjectTree: {fileID: 101163018}
 --- !u!4 &1081132549
 Transform:
