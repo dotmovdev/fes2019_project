@@ -5,10 +5,26 @@ using UnityEngine;
 public class StarMassControl : MonoBehaviour
 {
     [SerializeField]
-    private List<SphereCollider> colliders;
+    private GameObject starMassElementPrefab;
 
     [SerializeField]
-    private GameObject starMassElementPrefab;
+    private List<StarMassElementControl> massElementControlRefs = new List<StarMassElementControl>();
+
+    public int SignCount
+    {
+        get
+        {
+            int count = 0;
+
+            foreach(var element in massElementControlRefs)
+            {
+                var childSigns = element.GetComponentsInChildren<StarSphereControl>();
+                count += childSigns.Length;
+            }
+
+            return count;
+        }
+    }
 
     private void Start()
     {
@@ -16,6 +32,9 @@ public class StarMassControl : MonoBehaviour
         {
             GameObject starMassElement = Instantiate(starMassElementPrefab, this.transform);
             starMassElement.transform.position = Vector3.zero;
+
+            var controlRef = starMassElement.GetComponent<StarMassElementControl>();
+            massElementControlRefs.Add(controlRef);
         }
     }
 
