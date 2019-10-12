@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
         var starSphereControl = starSphere.GetComponent<StarSphereControl>();
 
         var targetPosition = new Vector3(
-            0, this.transform.position.y * -1, 0
+            0, this.transform.localPosition.y * -1, 0
             );
         starSphereControl.Spawn(id, sign, Vector3.zero, targetPosition, () =>
         {

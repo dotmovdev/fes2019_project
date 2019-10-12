@@ -10,6 +10,16 @@ public class MainCameraControl : MonoBehaviour
     [SerializeField]
     private float rotateSpeed = 0.015f;
 
+    [Header("Vertical Rotation")]
+    [SerializeField]
+    private bool isVerticalRotationActive = true;
+    [SerializeField]
+    private float verticaTop;
+    [SerializeField]
+    private float verticalBottom;
+
+    private int direction = 1;
+
     [Header("TargetObject")]
     [SerializeField]
     private Transform targetObjectTransform;
@@ -23,7 +33,22 @@ public class MainCameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.Rotate(new Vector3(0, rotateSpeed, 0));
+        if(verticaTop < this.transform.localRotation.x)
+        {
+            direction = -1;
+        }
+
+        if(verticalBottom > this.transform.localRotation.x)
+        {
+            direction = 1;
+        }
+
+        if (isVerticalRotationActive == false)
+        {
+            direction = 0;
+        }
+
+        this.transform.Rotate(new Vector3(rotateSpeed * direction, rotateSpeed, 0));
         mainCameraRef.transform.LookAt(targetObjectTransform);
     }
 }
