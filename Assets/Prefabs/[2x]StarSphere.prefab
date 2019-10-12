@@ -259,6 +259,7 @@ MonoBehaviour:
     type: 3}
   spawnEffect: {fileID: 2209297885191065842}
   sphereMeshRenderer: {fileID: 6827269249314490513}
+  starMeshRenderer: {fileID: 6709708264519709455}
   internalStar: {fileID: 6709708264519709449}
   headSpeedScale: 0.03
   spawnDuration: 1
@@ -343,6 +344,12 @@ GameObject:
 --- !u!4 &6709708264519709453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4870630974376497238, guid: 6b230ada7cd264c49905c6af4df3edda,
+    type: 3}
+  m_PrefabInstance: {fileID: 2200669281208427355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6709708264519709455 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4870630974376497236, guid: 6b230ada7cd264c49905c6af4df3edda,
     type: 3}
   m_PrefabInstance: {fileID: 2200669281208427355}
   m_PrefabAsset: {fileID: 0}

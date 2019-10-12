@@ -24,11 +24,21 @@ public class StarSphereControl : MonoBehaviour
     [Header("Sphere")]
     [SerializeField]
     private MeshRenderer sphereMeshRenderer;
-    public MeshRenderer MeshRenderer
+    public MeshRenderer SphereMeshRenderer
     {
         get
         {
             return sphereMeshRenderer;
+        }
+    }
+
+    [SerializeField]
+    private MeshRenderer starMeshRenderer;
+    public MeshRenderer StarMeshRenderer
+    {
+        get
+        {
+            return starMeshRenderer;
         }
     }
 
@@ -44,6 +54,8 @@ public class StarSphereControl : MonoBehaviour
     private Ease easeType;
     [SerializeField]
     private string id = "";
+    public int ColorIndex = 0;
+    
     private SignControl signControlRef;
 
     [Header("Event")]
@@ -131,6 +143,7 @@ public class StarSphereControl : MonoBehaviour
             if (headToCenter)
             {
                 this.transform.parent = other.gameObject.transform;
+                SphereMeshRenderer.material = gameMasterRef.NonBillboardCache[ColorIndex];
 
                 //縮小して、StarSphereを元に戻す
                 var targetScale = sphereScale / signControlRef.PositionScaleFactor * 0.85f;

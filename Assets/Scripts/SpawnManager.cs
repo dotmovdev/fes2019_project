@@ -42,6 +42,9 @@ public class SpawnManager : MonoBehaviour
         GameObject starSphere = Instantiate(StarSpherePrefab, this.transform);
         starSphere.transform.localRotation = new Quaternion(0, 0, 0, 0);
         var starSphereControl = starSphere.GetComponent<StarSphereControl>();
+        starSphereControl.ColorIndex = sign.colorIndex;
+        starSphereControl.SphereMeshRenderer.material = gameMasterRef.StarSphereCache[sign.colorIndex];
+        starSphereControl.StarMeshRenderer.material = gameMasterRef.StarCache[sign.colorIndex];
 
         var targetPosition = new Vector3(
             0, this.transform.localPosition.y * -1, 0

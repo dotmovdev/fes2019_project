@@ -33,6 +33,8 @@ public class MainCameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(this.transform.rotation.x);
+
         if(verticaTop < this.transform.localRotation.x)
         {
             direction = -1;
