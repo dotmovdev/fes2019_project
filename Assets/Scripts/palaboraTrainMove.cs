@@ -23,6 +23,7 @@ public class palaboraTrainMove : MonoBehaviour
     //VFX
     public VisualEffect VFX_smog;
     public VisualEffect VFX_senro;
+    private VisualEffect VFX_senroClone;
    
 
     //線路を呼ぶか否か。最後のほうは呼ばない。（未調整）
@@ -62,12 +63,12 @@ public class palaboraTrainMove : MonoBehaviour
             CreateRoad(senro_pos, dir);
 
             //VFX_senro.transform.position = senro_pos;
-            //VFX_senro.SetVector3("direction_VFX",-3 * this.transform.forward);
-            //VFX_senro.SetVector3("pos_", senro_pos);
+            
+            //VFX_senro.GetComponent<>
 
         }
-
-        
+        VFX_senroClone.SetVector3("direction_VFX", -2 * this.transform.forward);
+        VFX_senroClone.SetVector3("_pos", transform.position + (transform.forward * (offset/1.2f)) + (transform.up * -1.5f) + (transform.right * 0.5f));
     }
 
     private void Do()
@@ -88,6 +89,7 @@ public class palaboraTrainMove : MonoBehaviour
                     () => {
                         GameObject parent = transform.parent.gameObject;
                         Destroy(parent);
+                        Destroy(VFX_senroClone);
                     }
 
             );
@@ -100,7 +102,7 @@ public class palaboraTrainMove : MonoBehaviour
         MovingTime = _movingtime;
         pre_pos = this.transform.position;
         Do();
-        //Instantiate(VFX_senro,this.transform.position,Quaternion.identity);
+        VFX_senroClone = Instantiate(VFX_senro,this.transform.position,Quaternion.identity);
     }
     private void CreateRoad(Vector3 _position, Vector3 _dir)
     {

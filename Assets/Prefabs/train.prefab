@@ -2637,14 +2637,8 @@ MonoBehaviour:
   interval: 0.1
   offset: 8
   VFX_smog: {fileID: 2791113943117864315}
-  VFX_senro: {fileID: 466093665265380012, guid: c8ed09577416c3b4cbb32ce46f2b6f81,
+  VFX_senro: {fileID: 1595029633619897935, guid: a6286d663c7461f4bae2e20b5e549aa5,
     type: 3}
-  AC:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   param_a: 0.01
   param_b: -40
 --- !u!1 &3180628307844247792
@@ -3463,7 +3457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4668752012154946059}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.162}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 3259916456720672752}

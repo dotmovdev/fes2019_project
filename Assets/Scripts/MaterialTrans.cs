@@ -40,9 +40,12 @@ public class MaterialTrans : MonoBehaviour
         {
             param += TransSpeed/2;
             rend.material.SetFloat("_Param", param);
-            VFX_senro.SendEvent("OnStop");
-
+            if (param > 1.8)
+            {
+                VFX_senro.SendEvent("OnStop");
+            }
         }
+
         else if (param >= 0.5 && param <= 1.5)
         {
             param += TransSpeed/3;
