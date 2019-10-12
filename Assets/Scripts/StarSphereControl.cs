@@ -36,11 +36,15 @@ public class StarSphereControl : MonoBehaviour
     private Ease easeType;
     [SerializeField]
     private string id = "";
+    private SignControl signControlRef;
 
     [Header("Event")]
     public SignEvent OnCompleteCreateSign = new SignEvent();
+    [SerializeField]
+    private StarColliderControl starColliderControlRef;
 
     private bool headToCenter = false;
+    private static float sphereScale = 3.0f;
 
     private Transform _spawnTransform;
     public Transform SpawnerTransform
@@ -112,6 +116,33 @@ public class StarSphereControl : MonoBehaviour
     private void Start()
     {
         gameMasterRef = GameObject.Find("GameMaster").GetComponent<GameMaster>();
+
+        //衝突判定
+        starColliderControlRef.OnTriggerEnterEvent.AddListener((other) =>
+        {
+            if (headToCenter)
+            {
+                this.transform.parent = other.gameObject.transform;
+
+                //縮小して、StarSphereを元に戻す
+                var targetScale = sphereScale / signControlRef.PositionScaleFactor * 0.85f;
+                DOTween.To(
+                    () => 1.0f,
+                    (scale) =>
+                    {
+                        signControlRef.transform.localScale = new Vector3(scale, scale, scale);
+                    },
+                    targetScale,
+                    0.75f);
+                DOTween.To(
+                    () => Alpha,
+                    (alpha) => Alpha = alpha,
+                    1.0f,
+                    0.75f);
+
+                headToCenter = false;
+            }
+        });
     }
 
     private void Update()
@@ -119,15 +150,6 @@ public class StarSphereControl : MonoBehaviour
         if (headToCenter)
         {
             this.transform.localPosition -= CenterNormalDirection * headSpeedScale;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (headToCenter)
-        {
-            headToCenter = false;
-            this.transform.parent = other.gameObject.transform;
         }
     }
 
@@ -169,10 +191,10 @@ public class StarSphereControl : MonoBehaviour
 
     private void createSign(Sign sign)
     {
-        var signControl = instantiateSign();
-        signControl.AllocateStars(sign, () =>
+        signControlRef = instantiateSign();
+        signControlRef.AllocateStars(sign, () =>
         {
-            StartCoroutine(drawLinesCoroutine(signControl));
+            StartCoroutine(drawLinesCoroutine(signControlRef));
         });
     }
 

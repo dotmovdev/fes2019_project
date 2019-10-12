@@ -62,7 +62,7 @@ MonoBehaviour:
   spawnEffect: {fileID: 8854024329803522101}
   sphereMeshRenderer: {fileID: 4970566616003126540}
   internalStar: {fileID: 5856146711170451721}
-  headSpeedScale: 0.01
+  headSpeedScale: 1
   spawnDuration: 1.5
   easeType: 0
   id: 

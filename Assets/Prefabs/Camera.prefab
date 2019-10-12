@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCameraRef: {fileID: 3587818774623047103}
-  rotateSpeed: 0.015
+  rotateSpeed: 0.018
   targetObjectTransform: {fileID: 0}
 --- !u!1001 &6783091637215407039
 PrefabInstance:

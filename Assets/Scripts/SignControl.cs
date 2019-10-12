@@ -19,7 +19,24 @@ public class SignControl : MonoBehaviour
     [SerializeField]
     private Ease easeType;
 
-    private static float signScale = 1.0f;
+    [Header("Scale Factor")]
+    [SerializeField]
+    private Vector2 starPositionRange;
+    public float PositionScaleFactor
+    {
+        get
+        {
+            if(starPositionRange.x > starPositionRange.y)
+            {
+                return starPositionRange.x;
+            }
+            else
+            {
+                return starPositionRange.y;
+            }
+        }
+    }
+
     private static GameMaster gameMasterRef;
 
     private List<SignLineControl> signLines = new List<SignLineControl>();
@@ -60,8 +77,54 @@ public class SignControl : MonoBehaviour
         bool isLineSpawn = false;
         int priority = 1;
 
+        Vector2 left, right, top, bottom;
+        left = Vector2.zero;
+        right = Vector2.zero;
+        top = Vector2.zero;
+        bottom = Vector2.zero;
+
         for(int i = 0; i < starPositions.Length; i++)
         {
+            //範囲の計算
+            //left
+            if(starPositions[i].x < 0)
+            {
+                if(left.x > starPositions[i].x)
+                {
+                    left = starPositions[i];
+                }
+            }
+            //right
+            else
+            {
+                if(right.x < starPositions[i].x)
+                {
+                    right = starPositions[i];
+                }
+            }
+            //top
+            if(starPositions[i].y > 0)
+            {
+                if(top.y < starPositions[i].y)
+                {
+                    top = starPositions[i];
+                }
+            }
+            //bottom
+            else
+            {
+                if(top.y < starPositions[i].y)
+                {
+                    top = starPositions[i];
+                }
+            }
+
+            starPositionRange = new Vector2(
+                right.x - left.x,
+                top.y - bottom.y
+                );
+
+            //星の生成
             var star = instantiateStar();
             star.Material = gameMasterRef.StarCache[sign.colorIndex];
             star.transform.localPosition = Vector3.zero;
