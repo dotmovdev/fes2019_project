@@ -252,7 +252,7 @@ Material:
     - _ZWrite: 1
     - _alpha: 1
     - _alphaorigin: 1
-    - _deepness: 0
+    - _deepness: 1
     m_Colors:
     - Color_9D95F76: {r: 0, g: 0, b: 0, a: 0}
     - Color_A331214A: {r: 0, g: 0.18719946, b: 0.4339623, a: 0}
@@ -277,6 +277,6 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _deep: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0}
+    - _deep: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0}
     - _emission: {r: 0, g: 0, b: 0, a: 0}
     - _surface: {r: 0.14862938, g: 0.18867922, b: 0.18867922, a: 0}

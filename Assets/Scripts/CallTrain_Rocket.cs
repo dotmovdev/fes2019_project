@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class CallTrain_Rocket : MonoBehaviour
 {
-    public GameObject train_prefab;
-    public GameObject rocket_prefab;
-    
-    
+   
+    public GameObject rocket_prefab; 
     private GameObject rocket;
 
     public GameObject camManager;
@@ -19,9 +17,10 @@ public class CallTrain_Rocket : MonoBehaviour
     //放物線の動き検証用
     public GameObject parabora;
 
+    //コルーチンの秒数
+    public int Call_Trainminute;
+
     //検証用
-    [SerializeField]
-    private Vector3 startpos;
     public Vector3 unitVec;
     public int traintime;
     public float SpwanLag;
@@ -29,6 +28,7 @@ public class CallTrain_Rocket : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(callTrain_constant());
 
     }
 
@@ -82,6 +82,16 @@ public class CallTrain_Rocket : MonoBehaviour
         rocket = Instantiate(rocket_prefab, _position, Quaternion.identity);
         rocket.GetComponent<RocketMove>().setDirection(_direction);
         rocket.GetComponent<RocketMove>().setMovingTime(_minute);
+    }
+
+    IEnumerator callTrain_constant()
+    {
+        while (true)
+        {
+
+            CallTrain(spwanTrain, traintime);
+            yield return new WaitForSeconds(Call_Trainminute);//100秒ごとに呼び出す…んだろうか（未検証）
+        }
     }
 
 }

@@ -223,14 +223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc2e148189708d40994d01d51151fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  train_prefab: {fileID: 7690311424886024865, guid: 34331626311e09547990717d93c60127,
-    type: 3}
   rocket_prefab: {fileID: 8939704844005821913, guid: 0ed97e045b26b584fb7f27f82d3c1088,
     type: 3}
   camManager: {fileID: 752385124}
-  parabora: {fileID: 1338872305888948747, guid: ef993b46e85c178429b240da05b5ff72,
+  parabora: {fileID: 3059004379069057455, guid: 34331626311e09547990717d93c60127,
     type: 3}
-  startpos: {x: 0, y: 0, z: 0}
+  Call_Trainminute: 40
   unitVec: {x: -1, y: 0, z: 0}
   traintime: 30
   SpwanLag: 10
