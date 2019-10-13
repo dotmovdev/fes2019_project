@@ -238,7 +238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8892525607497362997}
-  - {fileID: 6709708264519709453}
+  - {fileID: 2200669281208427289}
   - {fileID: 3302758013711732245}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -259,14 +259,19 @@ MonoBehaviour:
     type: 3}
   spawnEffect: {fileID: 2209297885191065842}
   sphereMeshRenderer: {fileID: 6827269249314490513}
-  starMeshRenderer: {fileID: 6709708264519709455}
+  starMeshRenderer: {fileID: 2200669281208427282}
   sphereTransform: {fileID: 8892525607497362997}
-  internalStar: {fileID: 6709708264519709449}
+  internalStar: {fileID: 2200669281208427362}
   headSpeedScale: 0.03
   spawnDuration: 1
   easeType: 0
   id: 
   ColorIndex: 0
+  OnUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   starColliderControlRef: {fileID: 9108494254178851162}
 --- !u!1001 &2200669281208427355
 PrefabInstance:
@@ -337,19 +342,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b230ada7cd264c49905c6af4df3edda, type: 3}
---- !u!1 &6709708264519709449 stripped
+--- !u!1 &2200669281208427362 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4870630974376497234, guid: 6b230ada7cd264c49905c6af4df3edda,
     type: 3}
   m_PrefabInstance: {fileID: 2200669281208427355}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6709708264519709453 stripped
+--- !u!4 &2200669281208427289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4870630974376497238, guid: 6b230ada7cd264c49905c6af4df3edda,
     type: 3}
   m_PrefabInstance: {fileID: 2200669281208427355}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &6709708264519709455 stripped
+--- !u!23 &2200669281208427282 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 4870630974376497236, guid: 6b230ada7cd264c49905c6af4df3edda,
     type: 3}
