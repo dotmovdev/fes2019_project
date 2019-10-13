@@ -75,7 +75,7 @@ public class StarSphereControl : MonoBehaviour
     private StarColliderControl starColliderControlRef;
 
     private bool headToCenter = false;
-    private static float sphereScale = 5.0f;
+    private static float sphereScale = 7.0f;
 
     private Transform _spawnTransform;
     public Transform SpawnerTransform
@@ -158,7 +158,7 @@ public class StarSphereControl : MonoBehaviour
 
                 //縮小して、StarSphereを元に戻す
                 sphereTransform.localScale = new Vector3(sphereScale, sphereScale, sphereScale);
-                var targetScale = sphereScale / signControlRef.PositionScaleFactor * 0.85f;
+                var targetScale = (sphereScale * 0.85f / signControlRef.PositionScaleFactor);
                 DOTween.To(
                     () => 1.0f,
                     (scale) =>

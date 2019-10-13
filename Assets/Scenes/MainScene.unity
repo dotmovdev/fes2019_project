@@ -1409,10 +1409,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMasterRef: {fileID: 1081132548}
-  centralStarsVFXTransform: {fileID: 142992644}
+  centralVisualEffect: {fileID: 142992646}
   starMassElementPrefab: {fileID: 5605690860232288749, guid: 3658e7d41ad4ab54dbf95d3b58b7d8e9,
     type: 3}
   massElementControlRefs: []
+  sphereCollectDuration: 1
+  burstChargeDuration: 4
+  burstDuration: 5
+  capacity: 2
 --- !u!54 &1799320078
 Rigidbody:
   m_ObjectHideFlags: 0

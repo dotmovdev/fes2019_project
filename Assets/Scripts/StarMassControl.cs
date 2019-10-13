@@ -1,20 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.VFX;
 using DG.Tweening;
 
 public class StarMassControl : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField]
     private GameMaster gameMasterRef;
     [SerializeField]
-    private Transform centralStarsVFXTransform;
-
+    private VisualEffect centralVisualEffect;
+    private Transform centralVFXTransform
+    {
+        get
+        {
+            return centralVisualEffect.transform;
+        }
+    }
     [SerializeField]
     private GameObject starMassElementPrefab;
-
     [SerializeField]
     private List<StarMassElementControl> massElementControlRefs = new List<StarMassElementControl>();
+
+    [Header("Durations")]
+    [SerializeField]
+    private float sphereCollectDuration = 1.0f;
+    [SerializeField]
+    private float burstChargeDuration = 4.0f;
+    [SerializeField]
+    private float burstDuration = 5.0f;
+
+    [Header("Setting")]
+    [SerializeField]
+    private int capacity = 10;
 
     private bool burstStars = false;
 
@@ -50,40 +69,87 @@ public class StarMassControl : MonoBehaviour
     {
         this.transform.localPosition = new Vector3(0, 0, 0);
 
-        if(burstStars == false && SignCount > 2)
+        if(burstStars == false && SignCount > capacity - 1)
         {
-            var spheres = SetStarMassTransform();
-
-            bool addCallback = false;
-            foreach(var sphere in spheres)
-            {
-                var tween = DOTween.To(
-                    () => sphere.transform.localPosition,
-                    (position) => sphere.transform.localPosition = position,
-                    new Vector3(0, 0, 0),
-                    1.0f);
-
-                if(addCallback == false)
-                {
-                    tween.OnComplete(() =>
-                    {
-                        //いろんな方向へ飛ばす
-                        foreach(var _sphere in spheres)
-                        {
-                            //ランダムなベクトルを作る
-                            Vector3 addVector = getRandomDirection();
-                            _sphere.OnUpdateEvent.AddListener(() =>
-                            {
-                                _sphere.transform.localPosition += addVector;
-                            });
-                        }
-                    });
-                    addCallback = true;
-                }
-            }
-
-            burstStars = true;
+            burstSpheres();
         }
+    }
+
+    private IEnumerator burstSphereCoroutine()
+    {
+        burstStars = true;
+
+        var spheres = SetStarMassTransform();
+
+        //中央に寄せる
+        foreach (var sphere in spheres)
+        {
+            var tween = DOTween.To(
+                () => sphere.transform.localPosition,
+                (position) => sphere.transform.localPosition = position,
+                new Vector3(0, 0, 0),
+                sphereCollectDuration);
+        }
+
+        Debug.Log("<color=red>Collect spheres.</color>");
+        yield return new WaitForSeconds(sphereCollectDuration);
+
+        //中央のやつをぎゅーっと縮める
+        var chargeTween = DOTween.To(
+            () => centralVisualEffect.GetFloat("_SpawnRadiusScale"),
+            (scale) =>
+            {
+                centralVisualEffect.SetFloat("_SpawnRadiusScale", scale);
+            },
+            0.1f, burstChargeDuration);
+
+        yield return new WaitForSeconds(burstChargeDuration);
+
+        foreach(var sphere in spheres)
+        {
+            Vector3 addVector = getRandomDirection();
+            sphere.OnUpdateEvent.AddListener(() =>
+            {
+                sphere.transform.localPosition += addVector;
+            });
+        }
+
+        var burstTween = DOTween.To(
+            () => centralVisualEffect.GetFloat("_AttractionSpeed"),
+            (speed) => centralVisualEffect.SetFloat("_AttractionSpeed", speed),
+            -40.0f, burstDuration);
+
+        burstTween.onComplete = () =>
+        {
+            var spawnScaleTween = DOTween.To(
+                () => centralVisualEffect.GetFloat("_SpawnRadiusScale"),
+                (scale) =>
+                {
+                    centralVisualEffect.SetFloat("_SpawnRadiusScale", scale);
+                },
+                1.0f, burstChargeDuration / 2);
+            spawnScaleTween.onComplete = () =>
+            {
+                burstStars = false;
+            };
+
+            var finishBurstTween = DOTween.To(
+                () => centralVisualEffect.GetFloat("_AttractionSpeed"),
+                (speed) => centralVisualEffect.SetFloat("_AttractionSpeed", speed),
+                5.0f, burstDuration);
+            finishBurstTween.onComplete = () =>
+            {
+                foreach (var sphere in spheres)
+                {
+                    Destroy(sphere.gameObject);
+                }
+            };
+        };
+    }
+
+    private void burstSpheres()
+    {
+        StartCoroutine(burstSphereCoroutine());
     }
 
     private List<StarSphereControl> SetStarMassTransform()
@@ -96,7 +162,7 @@ public class StarMassControl : MonoBehaviour
 
             foreach (var childSign in childSigns)
             {
-                childSign.transform.parent = centralStarsVFXTransform;
+                childSign.transform.parent = centralVFXTransform;
                 controls.Add(childSign);
             }
         }
@@ -108,13 +174,13 @@ public class StarMassControl : MonoBehaviour
     {
         var v = Vector3.zero;
 
-        for(int i = 0; i < 3; i++)
-        {
-            int randomNum = Random.Range(0, 11);
-            bool isMinus = randomNum < 5 ? true : false;
-            v[i] = Random.Range(0.75f, 1.5f) * (isMinus ? -1 : 1);
-        }
+        var cameraTransform = gameMasterRef.MainCameraControlRef.transform;
+        var cameraDirection = cameraTransform.localPosition - v;
+        var normalizedDirection = cameraDirection.normalized;
 
-        return v;
+        normalizedDirection.x += Random.Range(-0.15f, 0.15f);
+        normalizedDirection.y += Random.Range(-0.15f, 0.15f);
+
+        return normalizedDirection;
     }
 }
