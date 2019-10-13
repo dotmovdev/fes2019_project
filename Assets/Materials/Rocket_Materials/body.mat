@@ -8,13 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: body
-  m_Shader: {fileID: -6465566751694194690, guid: 5ba19cefba8547049a6eeb25ab146da6,
+  m_Shader: {fileID: -6465566751694194690, guid: 6ea2adf7b64fcdb4ab1aebf14bad18c4,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -83,7 +83,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: f3a4bd519447bcd4d8186e54157ea88c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -120,6 +120,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_242C9535: 0.79
+    - Vector1_2490EC43: 0.1
     - Vector1_42475FFE: 0
     - Vector1_67CF6AAC: 0.652
     - Vector1_6F9C285B: 1
@@ -193,6 +194,7 @@ Material:
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
+    - _Metalic: 0.244
     - _Metallic: 0
     - _NormalMapSpace: 0
     - _NormalScale: 1
@@ -206,6 +208,7 @@ Material:
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
     - _SSRefractionProjectionModel: 0
+    - _Smooth: 0.694
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -246,6 +249,8 @@ Material:
     - _ZTestModeDistortion: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
+    - _alpha: 1
+    - _deepness: 1
     m_Colors:
     - Color_1FDB5498: {r: 1, g: 1, b: 1, a: 0}
     - Color_738D8438: {r: 0, g: 0, b: 0, a: 0}
@@ -255,7 +260,7 @@ Material:
     - Color_E85F55E: {r: 0, g: 0, b: 0, a: 0}
     - Color_FF1465F: {r: 0, g: 0, b: 0, a: 0}
     - Vector3_FA421207: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
@@ -265,6 +270,7 @@ Material:
     - _EmissiveColorLDR: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
+    - _PoolColor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
@@ -272,4 +278,6 @@ Material:
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
     - _baseColor: {r: 1, g: 0.9517279, b: 0.9386792, a: 0}
+    - _deep: {r: 1, g: 1, b: 1, a: 1}
     - _emission: {r: 0, g: 0, b: 0, a: 0}
+    - _surface: {r: 0, g: 0, b: 0, a: 0}

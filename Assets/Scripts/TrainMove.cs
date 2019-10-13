@@ -89,6 +89,7 @@ public class TrainMove : MonoBehaviour
                     ).OnComplete(() => {
                         
                         Destroy(this.gameObject);
+
                     }
                     ).SetDelay(MovingTime - MovingTime * 0.22f
                     ).OnPlay(() => {
@@ -118,7 +119,7 @@ public class TrainMove : MonoBehaviour
 
         //最後の色変化。マテリアルを１にしておく。(startだと処理が後回しにされる)
         
-        BodyRender = transform.Find("GameObject").GetComponentsInChildren<Renderer>();
+        BodyRender = transform.Find("train/GameObject").GetComponentsInChildren<Renderer>();
 
         foreach (Renderer render in BodyRender)
         {

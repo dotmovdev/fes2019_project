@@ -237,6 +237,8 @@ Material:
     - _ZTestModeDistortion: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
+    - _alpha: 1
+    - _deepness: 1
     m_Colors:
     - Color_9D95F76: {r: 1, g: 0.68235296, b: 0, a: 0}
     - Color_A331214A: {r: 1, g: 1, b: 1, a: 0}
@@ -257,3 +259,6 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _deep: {r: 1, g: 0.6362447, b: 0, a: 0}
+    - _emission: {r: 0, g: 0, b: 0, a: 0}
+    - _surface: {r: 0, g: 0, b: 0, a: 0}

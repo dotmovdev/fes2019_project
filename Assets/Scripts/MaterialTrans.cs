@@ -38,7 +38,7 @@ public class MaterialTrans : MonoBehaviour
         }
         else if (param > 1.5)
         {
-            param += TransSpeed/2;
+            param += TransSpeed;
             rend.material.SetFloat("_Param", param);
             if (param > 1.8)
             {

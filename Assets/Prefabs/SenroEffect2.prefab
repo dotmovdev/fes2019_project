@@ -53,7 +53,7 @@ VisualEffect:
       - m_Value: {x: 0, y: 0, z: 0}
         m_Name: _pos
         m_Overridden: 1
-      - m_Value: {x: 0, y: -0, z: 0}
+      - m_Value: {x: 4.92, y: -0, z: 0}
         m_Name: direction_VFX
         m_Overridden: 1
       - m_Value: {x: 3, y: 0, z: 0}
@@ -73,31 +73,31 @@ VisualEffect:
           serializedVersion: 2
           m_Curve:
           - serializedVersion: 3
-            time: 0.016086578
-            value: 0.10079956
-            inSlope: 2.02941
-            outSlope: 2.02941
+            time: -0.5920868
+            value: 0.55215454
+            inSlope: 0.47146967
+            outSlope: 0.47146967
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0.080042064
+            outWeight: 0.16631784
           - serializedVersion: 3
-            time: 0.50120544
-            value: 0.3718624
-            inSlope: 0
-            outSlope: 0
+            time: 0.30107117
+            value: 0.7224827
+            inSlope: -0.07992939
+            outSlope: -0.07992939
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
+            outWeight: 0.6650811
           - serializedVersion: 3
-            time: 0.9932251
-            value: 0.10095215
-            inSlope: -1.054539
-            outSlope: -1.054539
+            time: 0.9887183
+            value: 0.5535356
+            inSlope: -0.072015814
+            outSlope: -0.072015814
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0.071351096
+            inWeight: 0.5509174
             outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
@@ -108,8 +108,8 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 0, g: 1.3195078, b: 1.1953188, a: 0}
-          key1: {r: 10.432951, g: 10.432951, b: 10.432951, a: 1}
+          key0: {r: 1.6694256, g: 2.4559739, b: 2.7016656, a: 0}
+          key1: {r: 0, g: 1.1995261, b: 2.7016656, a: 1}
           key2: {r: 0, g: 0, b: 0, a: 1}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
@@ -125,7 +125,7 @@ VisualEffect:
           ctime6: 0
           ctime7: 0
           atime0: 0
-          atime1: 6554
+          atime1: 21203
           atime2: 42791
           atime3: 65535
           atime4: 0

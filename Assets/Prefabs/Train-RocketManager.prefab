@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8774570670622511423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8774570670622511421}
+  - component: {fileID: 8774570670622511422}
+  m_Layer: 0
+  m_Name: Train-RocketManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8774570670622511421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8774570670622511423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8774570670622511422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8774570670622511423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc2e148189708d40994d01d51151fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocket_prefab: {fileID: 8939704844005821913, guid: 0ed97e045b26b584fb7f27f82d3c1088,
+    type: 3}
+  camManager: {fileID: 0}
+  parabora: {fileID: 3059004379069057455, guid: 34331626311e09547990717d93c60127,
+    type: 3}
+  SpwanHeight: 400
+  Call_Trainminute: 10
+  Call_Rocketminute: 3
+  SpwanLag_Angle: 0
+  unitVec: {x: -1, y: 0, z: 0}
+  Train_time: 20
+  Rocket_time: 20

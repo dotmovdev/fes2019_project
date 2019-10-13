@@ -57,18 +57,13 @@ public class palaboraTrainMove : MonoBehaviour
         if (timeleft <= 0.0)
         {
             timeleft = interval;
-            
-            Vector3 dir = Vector3.Normalize(direction);
-            Vector3 senro_pos = transform.position + (transform.forward * offset) + (transform.up * -1.5f) + (transform.right * 0.5f);
-            CreateRoad(senro_pos, dir);
-
-            //VFX_senro.transform.position = senro_pos;
-            
-            //VFX_senro.GetComponent<>
-
+            if (callRoad == true)
+            {
+                Vector3 dir = Vector3.Normalize(direction);
+                Vector3 senro_pos = transform.position + (transform.forward * offset) + (transform.up * -1.5f) + transform.right * 0.5f;
+                CreateRoad(senro_pos, dir);
+            }
         }
-        VFX_senroClone.SetVector3("direction_VFX", -2 * this.transform.forward);
-        VFX_senroClone.SetVector3("_pos", transform.position + (transform.forward * (offset/1.2f)) + (transform.up * -1.5f) + (transform.right * 0.5f));
     }
 
     private void Do()
@@ -87,9 +82,10 @@ public class palaboraTrainMove : MonoBehaviour
                 MovingTime
             ).OnComplete(
                     () => {
-                        GameObject parent = transform.parent.gameObject;
-                        Destroy(parent);
+
+                        Destroy(transform.parent.gameObject);
                         Destroy(VFX_senroClone);
+
                     }
 
             );
@@ -102,14 +98,77 @@ public class palaboraTrainMove : MonoBehaviour
         MovingTime = _movingtime;
         pre_pos = this.transform.position;
         Do();
-        VFX_senroClone = Instantiate(VFX_senro,this.transform.position,Quaternion.identity);
+        VFX_senroClone = Instantiate(VFX_senro, new Vector3(0, 0, 0), Quaternion.identity);
+        VFX_senroClone.SetVector3("direction_VFX",new Vector3(0, 0, 0));
+        VFX_senroClone.SetVector3("_pos", new Vector3(0, 0, 0));
+        callRoad = true;
+        BodyRender = transform.Find("train/GameObject").GetComponentsInChildren<Renderer>();
+        foreach (Renderer render in BodyRender)
+        {
+            if (render.material.HasProperty("_alpha"))
+            {
+                render.material.SetFloat("_alpha", 0);
+                float BM = render.material.GetFloat("_alpha");
+                DOTween.To
+                   (
+                       () => BM,
+                       num => BM = num,
+                       1,
+                       MovingTime * 0.1f
+                    ).OnUpdate(() => {
+                        render.material.SetFloat("_alpha", BM);
+                    }
+                    ).OnComplete(
+                    () => {
+                        
+                        Dissolve_andDestroy();
+                    }
+                    );//移動時間の1割の秒数で出てくる
+            }
+        }
+
+        
     }
+
     private void CreateRoad(Vector3 _position, Vector3 _dir)
     {
         Road = Instantiate(road_prefab, _position, Quaternion.identity);
         Road.transform.rotation = Quaternion.LookRotation(_dir);
-        Road.GetComponent<MaterialTrans>().SetTransSpeed(interval/100*7);//線路の出てくるスピードをintervalを基準に指定
-        
+        Road.GetComponent<MaterialTrans>().SetTransSpeed(interval/100*6.4f);//線路の出てくるスピードをintervalを基準に指定
+
+        VFX_senroClone.SetVector3("direction_VFX", -1 * _dir);
+        VFX_senroClone.SetVector3("_pos", _position);
+
     }
+
+    //ラストの透明度
+    private void Dissolve_andDestroy()
+    {
+
+        foreach (Renderer render in BodyRender)
+        {
+            if (render.material.HasProperty("_alpha"))
+            {
+                float BM = render.material.GetFloat("_alpha");
+                DOTween.To
+                   (
+                       () => BM,
+                       num => BM = num,
+                       0,
+                       MovingTime * 0.2f
+                    ).OnUpdate(() => {
+                        render.material.SetFloat("_alpha", BM);
+                    }
+                    
+                    ).SetDelay(MovingTime - MovingTime * 0.42f
+                    ).OnPlay(() => {
+                        callRoad = false;
+                        VFX_smog.SendEvent("OnStop");
+
+                    });//移動時間の2割の秒数で消える
+            }
+        }
+    }
+
 
 }
