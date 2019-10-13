@@ -260,11 +260,13 @@ MonoBehaviour:
   spawnEffect: {fileID: 2209297885191065842}
   sphereMeshRenderer: {fileID: 6827269249314490513}
   starMeshRenderer: {fileID: 6709708264519709455}
+  sphereTransform: {fileID: 8892525607497362997}
   internalStar: {fileID: 6709708264519709449}
   headSpeedScale: 0.03
   spawnDuration: 1
   easeType: 0
   id: 
+  ColorIndex: 0
   starColliderControlRef: {fileID: 9108494254178851162}
 --- !u!1001 &2200669281208427355
 PrefabInstance:

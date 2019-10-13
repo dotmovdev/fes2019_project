@@ -14,9 +14,11 @@ public class MainCameraControl : MonoBehaviour
     [SerializeField]
     private bool isVerticalRotationActive = true;
     [SerializeField]
-    private float verticaTop;
+    private float verticaRange;
     [SerializeField]
-    private float verticalBottom;
+    private float verticalRotateScale = 0.5f;
+    [SerializeField]
+    private float horizontalRotateScale = 0.75f;
 
     private int direction = 1;
 
@@ -33,24 +35,10 @@ public class MainCameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(this.transform.rotation.x);
+        this.transform.localEulerAngles = new Vector3(
+            Mathf.Sin(Time.time * verticalRotateScale) * verticaRange,
+            Time.time * horizontalRotateScale, this.transform.localEulerAngles.z);
 
-        if(verticaTop < this.transform.localRotation.x)
-        {
-            direction = -1;
-        }
-
-        if(verticalBottom > this.transform.localRotation.x)
-        {
-            direction = 1;
-        }
-
-        if (isVerticalRotationActive == false)
-        {
-            direction = 0;
-        }
-
-        this.transform.Rotate(new Vector3(rotateSpeed * direction, rotateSpeed, 0));
         mainCameraRef.transform.LookAt(targetObjectTransform);
     }
 }

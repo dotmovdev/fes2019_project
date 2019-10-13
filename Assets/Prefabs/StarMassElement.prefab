@@ -75,6 +75,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 532846022961876578}
-  minRotateSpeed: -1
-  maxRotateSpeed: 1
+  minRotateSpeed: 0.35
+  maxRotateSpeed: 0.75
   rotateVector: {x: 0, y: 0, z: 0}

@@ -43,6 +43,16 @@ public class StarSphereControl : MonoBehaviour
     }
 
     [SerializeField]
+    private Transform sphereTransform;
+    private Transform SphereTransform
+    {
+        get
+        {
+            return sphereTransform;
+        }
+    }
+
+    [SerializeField]
     private GameObject internalStar;
 
     [Header("SpawnParameters")]
@@ -60,11 +70,12 @@ public class StarSphereControl : MonoBehaviour
 
     [Header("Event")]
     public SignEvent OnCompleteCreateSign = new SignEvent();
+    public UnityEvent OnUpdateEvent = new UnityEvent();
     [SerializeField]
     private StarColliderControl starColliderControlRef;
 
     private bool headToCenter = false;
-    private static float sphereScale = 3.0f;
+    private static float sphereScale = 5.0f;
 
     private Transform _spawnTransform;
     public Transform SpawnerTransform
@@ -146,6 +157,7 @@ public class StarSphereControl : MonoBehaviour
                 SphereMeshRenderer.material = gameMasterRef.NonBillboardCache[ColorIndex];
 
                 //縮小して、StarSphereを元に戻す
+                sphereTransform.localScale = new Vector3(sphereScale, sphereScale, sphereScale);
                 var targetScale = sphereScale / signControlRef.PositionScaleFactor * 0.85f;
                 DOTween.To(
                     () => 1.0f,
@@ -154,12 +166,12 @@ public class StarSphereControl : MonoBehaviour
                         signControlRef.transform.localScale = new Vector3(scale, scale, scale);
                     },
                     targetScale,
-                    0.75f);
+                    1.25f);
                 DOTween.To(
                     () => Alpha,
                     (alpha) => Alpha = alpha,
                     1.0f,
-                    0.75f);
+                    1.25f);
 
                 headToCenter = false;
             }
@@ -172,6 +184,8 @@ public class StarSphereControl : MonoBehaviour
         {
             this.transform.localPosition -= CenterNormalDirection * headSpeedScale;
         }
+
+        OnUpdateEvent.Invoke();
     }
 
     public void PlayBurst()

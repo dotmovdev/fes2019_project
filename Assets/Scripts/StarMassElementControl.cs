@@ -9,9 +9,9 @@ public class StarMassElementControl : MonoBehaviour
 
     [Header("Rotation")]
     [SerializeField]
-    private float minRotateSpeed = 0.2f;
+    private float minRotateSpeed = 0.35f;
     [SerializeField]
-    private float maxRotateSpeed = 1.0f;
+    private float maxRotateSpeed = 0.75f;
     [SerializeField]
     private Vector3 rotateVector;
 
@@ -24,6 +24,8 @@ public class StarMassElementControl : MonoBehaviour
             Random.Range(minRotateSpeed, maxRotateSpeed),
             0
             );
+
+        this.transform.localPosition = new Vector3(0, 0, 0);
         StartCoroutine(SetColliderRandomRadius());
     }
 
@@ -32,7 +34,7 @@ public class StarMassElementControl : MonoBehaviour
     {
         while (true)
         {
-            collider.radius = Random.Range(0.35f, 1.0f);
+            collider.radius = Random.Range(0.5f, 0.65f);
             yield return new WaitForSeconds(Random.Range(0.2f, 0.5f));
         }
     }
