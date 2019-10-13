@@ -35,8 +35,12 @@ public class MultiScreenControl : MonoBehaviour
         const int HWND_TOPMOST = -1;
         //ウィンドウを表示
         const int SWP_SHOWWINDOW = 0x0040;
-
+        //ウィンドウの名称から取得
         windowHandle = NativePlugin.FindWindow(null, WINDOW_NAME);
+
+        //タイトルバーの非表示
+        uint style = NativePlugin.GetWindowLong(windowHandle, NativePlugin.GWL_STYLE);
+        NativePlugin.SetWindowLong(windowHandle, NativePlugin.GWL_STYLE, (uint)(style ^ NativePlugin.WS_CAPTION));
 
         NativePlugin.SetWindowPos(windowHandle, HWND_TOPMOST, 0, 0, 1920 * 2, 1080, SWP_SHOWWINDOW);
     }
