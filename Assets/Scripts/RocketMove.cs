@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Experimental.VFX;
 
 public class RocketMove : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class RocketMove : MonoBehaviour
     private Vector3 pre_pos;
 
     public GameObject rocket;
+    public VisualEffect Rocket_VFX_prefab;
+    private VisualEffect RocketVFX;
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +40,17 @@ public class RocketMove : MonoBehaviour
             (
             transform.position + goaldir * MovingTime * 50f, MovingTime).OnComplete(() =>
             {
+                Destroy(RocketVFX.gameObject);
                 Destroy(this.gameObject);
-            });
+                
+            }).OnUpdate(
+            () =>
+            {
+                float rand = Random.Range(-20,20);
+                RocketVFX.SetVector3("pos",this.gameObject.transform.position);
+                RocketVFX.SetVector3("direction", rocket.transform.forward + new Vector3(rand, rand, rand));
+            }
+            );
     }
    
 
@@ -46,9 +58,10 @@ public class RocketMove : MonoBehaviour
     {
         
         MovingTime = _movingtime;
-        Vector3 goalPos = new Vector3(Random.Range(-100, 100), 0, Random.Range(-100, 100));//おおよそ中心にむかってとぶ
+        Vector3 goalPos = new Vector3(Random.Range(10, 100), 0, Random.Range(10, 100));//おおよそ中心にむかってとぶ
         goaldir = (goalPos - this.gameObject.transform.position).normalized;
         Do();
+        RocketVFX = Instantiate(Rocket_VFX_prefab,new Vector3(0,0,0),Quaternion.identity);
     }
 
 }

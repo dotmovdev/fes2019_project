@@ -43,15 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc2e148189708d40994d01d51151fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocket_prefab: {fileID: 8939704844005821913, guid: 0ed97e045b26b584fb7f27f82d3c1088,
+  rocket_prefab: {fileID: 8543826537900331728, guid: 0ed97e045b26b584fb7f27f82d3c1088,
     type: 3}
   camManager: {fileID: 0}
-  parabora: {fileID: 3059004379069057455, guid: 34331626311e09547990717d93c60127,
+  Train_prefab: {fileID: 3059004379069057455, guid: 34331626311e09547990717d93c60127,
     type: 3}
-  SpwanHeight: 400
-  Call_Trainminute: 10
-  Call_Rocketminute: 3
-  SpwanLag_Angle: 0
-  unitVec: {x: -1, y: 0, z: 0}
+  SpwanTrain_Height: 400
+  Coroutine_Trainminute: 50
+  Coroutine_Rocketminute: 30
+  SpwanposToCam_Angle: 24
   Train_time: 20
-  Rocket_time: 20
+  Rocket_time: 40

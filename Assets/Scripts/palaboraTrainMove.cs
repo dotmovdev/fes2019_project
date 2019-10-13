@@ -68,6 +68,10 @@ public class palaboraTrainMove : MonoBehaviour
 
     private void Do()
     {
+        VFX_senroClone = Instantiate(VFX_senro, new Vector3(0, 0, 0), Quaternion.identity);
+        VFX_senroClone.SetVector3("direction_VFX", new Vector3(0, 0, 0));
+        VFX_senroClone.SetVector3("_pos", new Vector3(0, 0, 0));
+
         //二次関数的な動き
         DOTween.To
             (
@@ -82,12 +86,10 @@ public class palaboraTrainMove : MonoBehaviour
                 MovingTime
             ).OnComplete(
                     () => {
-
+                        Destroy(VFX_senroClone.gameObject);
                         Destroy(transform.parent.gameObject);
-                        Destroy(VFX_senroClone);
-
                     }
-
+            
             );
     }
  
@@ -98,9 +100,6 @@ public class palaboraTrainMove : MonoBehaviour
         MovingTime = _movingtime;
         pre_pos = this.transform.position;
         Do();
-        VFX_senroClone = Instantiate(VFX_senro, new Vector3(0, 0, 0), Quaternion.identity);
-        VFX_senroClone.SetVector3("direction_VFX",new Vector3(0, 0, 0));
-        VFX_senroClone.SetVector3("_pos", new Vector3(0, 0, 0));
         callRoad = true;
         BodyRender = transform.Find("train/GameObject").GetComponentsInChildren<Renderer>();
         foreach (Renderer render in BodyRender)
@@ -137,7 +136,8 @@ public class palaboraTrainMove : MonoBehaviour
         Road.GetComponent<MaterialTrans>().SetTransSpeed(interval/100*6.4f);//線路の出てくるスピードをintervalを基準に指定
 
         VFX_senroClone.SetVector3("direction_VFX", -1 * _dir);
-        VFX_senroClone.SetVector3("_pos", _position);
+        float rnd = Random.Range(-0.2f,0.2f);
+        VFX_senroClone.SetVector3("_pos", _position + new Vector3(rnd, 0, rnd));
 
     }
 
