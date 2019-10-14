@@ -54,6 +54,10 @@ public class SpawnManager : MonoBehaviour
             Debug.LogFormat("<color=red>SpawnSignID: {0}</color>", id);
         });
 
+        //効果音を再生する
+        var soundEffects = gameMasterRef.SoundEffectsControlRef;
+        soundEffects.PlayOneShot(soundEffects.SpawnSound, 1.25f);
+
         //フラグのリセットを任せる
         starSphereControl.OnCompleteCreateSign.AddListener(() =>
         {

@@ -95,6 +95,11 @@ public class StarMassControl : MonoBehaviour
         yield return new WaitForSeconds(sphereCollectDuration);
 
         //中央のやつをぎゅーっと縮める
+        
+        //効果音 いい効果音があったら
+        //var soundEffects = gameMasterRef.SoundEffectsControlRef;
+        //soundEffects.PlayOneShot(soundEffects.StarBurstImpactSound, 0.65f);
+
         var chargeTween = DOTween.To(
             () => centralVisualEffect.GetFloat("_SpawnRadiusScale"),
             (scale) =>
@@ -114,10 +119,14 @@ public class StarMassControl : MonoBehaviour
             });
         }
 
+        //バースト開始
         var burstTween = DOTween.To(
             () => centralVisualEffect.GetFloat("_AttractionSpeed"),
             (speed) => centralVisualEffect.SetFloat("_AttractionSpeed", speed),
             -40.0f, burstDuration);
+
+        //効果音
+        soundEffects.PlayOneShot(soundEffects.StarBurstSound, burstDuration);
 
         burstTween.onComplete = () =>
         {

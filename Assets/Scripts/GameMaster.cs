@@ -98,6 +98,16 @@ public class GameMaster : MonoBehaviour, ISignCallback
         }
     }
 
+    [SerializeField]
+    private SoundEffectsControl soundEffectsControlRef;
+    public SoundEffectsControl SoundEffectsControlRef
+    {
+        get
+        {
+            return soundEffectsControlRef;
+        }
+    }
+
     [Header("Caches")]
     [SerializeField]
     private MaterialCacheManager lineCache;

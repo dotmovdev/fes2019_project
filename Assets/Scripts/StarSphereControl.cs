@@ -133,6 +133,7 @@ public class StarSphereControl : MonoBehaviour
         }
     }
 
+    [SerializeField]
     private GameMaster gameMasterRef;
 
     private Vector3 CenterNormalDirection
@@ -191,6 +192,9 @@ public class StarSphereControl : MonoBehaviour
     public void PlayBurst()
     {
         spawnEffect.SendEvent("OnBurst");
+        //効果音
+        var soundEffects = gameMasterRef.SoundEffectsControlRef;
+        soundEffects.PlayOneShot(soundEffects.SpawnBurstSound, 1.0f);
         //一緒に内部の星も消す
         Destroy(internalStar);
     }
