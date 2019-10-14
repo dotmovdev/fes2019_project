@@ -39,6 +39,8 @@ public class palaboraTrainMove : MonoBehaviour
     private Vector3 pre_pos;
     private Vector3 direction;
 
+    private AudioSource sound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +91,6 @@ public class palaboraTrainMove : MonoBehaviour
                         Destroy(VFX_senroClone.gameObject);
                         Destroy(transform.parent.gameObject);
                     }
-            
             );
     }
  
@@ -100,6 +101,8 @@ public class palaboraTrainMove : MonoBehaviour
         MovingTime = _movingtime;
         pre_pos = this.transform.position;
         Do();
+        sound = GetComponent<AudioSource>();
+        StartCoroutine(sound_onoff());
         callRoad = true;
         BodyRender = transform.Find("train/GameObject").GetComponentsInChildren<Renderer>();
         foreach (Renderer render in BodyRender)
@@ -125,8 +128,6 @@ public class palaboraTrainMove : MonoBehaviour
                     );//移動時間の1割の秒数で出てくる
             }
         }
-
-        
     }
 
     private void CreateRoad(Vector3 _position, Vector3 _dir)
@@ -170,5 +171,13 @@ public class palaboraTrainMove : MonoBehaviour
         }
     }
 
+    IEnumerator sound_onoff()
+    {
+        yield return new WaitForSeconds(MovingTime * 0.9f);
 
+        sound.DOFade(
+            0f,
+            2
+            );
+    }
 }
