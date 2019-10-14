@@ -95,9 +95,9 @@ public class StarMassControl : MonoBehaviour
         yield return new WaitForSeconds(sphereCollectDuration);
 
         //中央のやつをぎゅーっと縮める
-        
+
         //効果音 いい効果音があったら
-        //var soundEffects = gameMasterRef.SoundEffectsControlRef;
+        var soundEffects = gameMasterRef.SoundEffectsControlRef;
         //soundEffects.PlayOneShot(soundEffects.StarBurstImpactSound, 0.65f);
 
         var chargeTween = DOTween.To(
