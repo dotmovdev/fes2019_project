@@ -29,7 +29,7 @@ public class MultiScreenControl : MonoBehaviour
     {
         int windowHandle;  //ウィンドウ
 
-        const String WINDOW_NAME = "fes2019";
+        const String WINDOW_NAME = "tsumugu.mov";
 
         //常に最前面に表示
         const int HWND_TOPMOST = -1;
