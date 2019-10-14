@@ -182,6 +182,9 @@ public class GameMaster : MonoBehaviour, ISignCallback
     {
         Destroy(TestObjectTree);
 
+        //マウスカーソルの非表示
+        Cursor.visible = false;
+
         //星座を保存・管理しておくクラスから通知を受け取る
         SignStorageRef.SetOnReleaceListener(this);
         //最初は0からスタートしたい
@@ -197,7 +200,10 @@ public class GameMaster : MonoBehaviour, ISignCallback
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void OnReceived(string id, Sign sign)

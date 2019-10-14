@@ -1554,7 +1554,7 @@ MonoBehaviour:
   sphereCollectDuration: 1
   burstChargeDuration: 4
   burstDuration: 5
-  capacity: 2
+  capacity: 10
 --- !u!54 &1799320078
 Rigidbody:
   m_ObjectHideFlags: 0
