@@ -17,6 +17,9 @@ public class RocketMove : MonoBehaviour
     public VisualEffect Rocket_VFX_prefab;
     private VisualEffect RocketVFX;
 
+    private AudioSource sound;
+    private bool soundoff;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,21 +37,27 @@ public class RocketMove : MonoBehaviour
     }
     private void Do()
     {
-        //終わったらデストロイ
+        sound = GetComponent<AudioSource>();
         
+        StartCoroutine(sound_onoff());
+        //終わったらデストロイ
+
         transform.DOMove
             (
-            transform.position + goaldir * MovingTime * 50f, MovingTime).OnComplete(() =>
+            transform.position + goaldir * MovingTime * 50f, MovingTime)
+            .OnComplete(() =>
             {
                 Destroy(RocketVFX.gameObject);
                 Destroy(this.gameObject);
-                
-            }).OnUpdate(
+
+            })
+            .OnUpdate(
             () =>
             {
                 float rand = Random.Range(-20,20);
                 RocketVFX.SetVector3("pos",this.gameObject.transform.position);
                 RocketVFX.SetVector3("direction", rocket.transform.forward + new Vector3(rand, rand, rand));
+                
             }
             );
     }
@@ -63,5 +72,17 @@ public class RocketMove : MonoBehaviour
         Do();
         RocketVFX = Instantiate(Rocket_VFX_prefab,new Vector3(0,0,0),Quaternion.identity);
     }
+
+    IEnumerator sound_onoff()
+    {
+        LoopMusicPlayer LMP = GetComponent<LoopMusicPlayer>();
+        
+        yield return new WaitForSeconds(MovingTime * 0.3f);
+
+        
+        LMP.FadeOut();
+
+    }
+
 
 }
